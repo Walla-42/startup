@@ -41,20 +41,30 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Game Leaderboards
+- Timed minigames
+- Secured Login over HTTPS
+- Multiple choice and written response questions
+- Live scoring
+- Game Results are persistently stored in the database for leaderboard tracking
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - To build the basic page structure. 5 total pages- Login, create account, home, game1 and game2.
+- **CSS** - Used for application styling. 
+- **React** - To call functions on the database for user data and leaderboards as well s game trivia.
+- **Service** - backend service with endpoints for the following:
+    - User registration
+    - User Login
+    - User Logout
+    - Fetch Trivia Question
+    - Fetch Molecule Picture from PubChem PUG-REST API
+    - Submit Game Score
+    - Fetch Leaderboard 
+- **DB/Login** - used to store users, and game scores in the database. Credentials are stored in the database hashed and users will be unable to participate in a game if they are not logged in. 
+- **WebSocket** - When new high scores are achieved, the message is broadcast to the server. Leaderboard is updated live as scores are recieved. 
 
 ## 🚀 AWS deliverable
 
