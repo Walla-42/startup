@@ -2,7 +2,8 @@
 
 [My Notes](notes.md)
 
-BioMatch is a gamified biology quiz website that turns molecular biology into a fast-paced competition. Players race against the clock to identify amino acids, nucleotides, and sequences, or tackle biochemistry trivia. Every round is timed, accuracy matters, and scores feed into a live leaderboard — making learning competitive, fun, and addictive. It’s designed for students, educators, and biology enthusiasts who want to sharpen their knowledge while engaging in real-time challenges.
+BioMatch is a gamified quiz platform that transforms molecular biology into a fast-paced competition. Players race against the clock to identify amino acids, nucleotides, and sequences, with scores updated to a live leaderboard. It makes learning biology competitive and fun — perfect for students, educators, or biology enthusiasts looking to sharpen their knowledge through real-time challenges.
+
 
 ## 🚀 Specification Deliverable
 
@@ -19,7 +20,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-BioMatch is a gamified biology quiz app that turns molecular biology into a fast-paced competition. Players race against the clock to identify amino acids, nucleotides, and sequences, or tackle biochemistry trivia. Every round is timed, accuracy matters, and scores feed into a live leaderboard — making learning competitive, fun, and addictive. It’s designed for students, educators, and biology enthusiasts who want to sharpen their knowledge while engaging in real-time challenges.
+BioMatch is a gamified quiz platform that transforms molecular biology into a fast-paced competition. Players race against the clock to identify amino acids, nucleotides, and sequences, with scores updated to a live leaderboard. It makes learning biology competitive and fun — perfect for students, educators, or biology enthusiasts looking to sharpen their knowledge through real-time challenges.
 
 ### Design
 
