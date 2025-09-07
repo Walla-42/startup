@@ -13,8 +13,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [x] Proper use of Markdown
 - [x] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
+- [x] Description of key features
+- [x] Description of how you will use each technology
 - [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
@@ -32,20 +32,20 @@ BioMatch is a gamified biology quiz app that turns molecular biology into a fast
 
 
 
-```mermaid
+<!-- ```mermaid
 sequenceDiagram
     actor You
     actor Website
     You->>Website: Replace this with your design
-```
+``` -->
 
 ### Key features
 
-- Game Leaderboards
+- live Game Leaderboards
 - Timed minigames
 - Secured Login over HTTPS
 - Multiple choice and written response questions
-- Live scoring
+- In-game scoring
 - Game Results are persistently stored in the database for leaderboard tracking
 
 ### Technologies
@@ -53,18 +53,18 @@ sequenceDiagram
 I am going to use the required technologies in the following ways.
 
 - **HTML** - To build the basic page structure. 5 total pages- Login, create account, home, game1 and game2.
-- **CSS** - Used for application styling. 
-- **React** - To call functions on the database for user data and leaderboards as well s game trivia.
+- **CSS** - for application styling and design. 
+- **React** - used for front end, building reusable UI components, managing user input state, managing routing between pages, and updating the page as user interact with it. 
 - **Service** - backend service with endpoints for the following:
     - User registration
     - User Login
     - User Logout
     - Fetch Trivia Question
-    - Fetch Molecule Picture from PubChem PUG-REST API
+    - Fetch Molecule Picture from PubChem [PUG-REST API](https://pubchem.ncbi.nlm.nih.gov/docs/pug-rest)
     - Submit Game Score
     - Fetch Leaderboard 
 - **DB/Login** - used to store users, and game scores in the database. Credentials are stored in the database hashed and users will be unable to participate in a game if they are not logged in. 
-- **WebSocket** - When new high scores are achieved, the message is broadcast to the server. Leaderboard is updated live as scores are recieved. 
+- **WebSocket** - When new high scores are achieved, a message is broadcast to the server. Leaderboard is updated live as scores are recieved on game end. 
 
 ## 🚀 AWS deliverable
 
