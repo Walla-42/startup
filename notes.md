@@ -2,6 +2,7 @@
 ### Table of Contents:
 - [Introduction](#introduction)
 - [Git](#git)
+- [Markdown Styling on GITHUB](#Github-Markdown)
 - [The Internet](#the-internet)
 - [Amazon Web Services](#amazon-web-services)
 - [Domain Names](#domain-names)
@@ -12,6 +13,24 @@ This document houses all of my notes taken during my participation in CS260: Web
 
 ## Git
 Instruction 1 talked about how to use Github. I already use github frequently and have no additional notes to put here for this section. I did learn that you can add a [!Note] in a markdown file, which is useful for keeping my documentation clean for the user. 
+
+## Github Markdown
+### Below is some useful github styling for gitub
+
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
+
+> [!TIP]
+> Helpful advice for doing things better or more easily.
+
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
+
+> [!WARNING]
+> Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
 
 ## The Internet
 The internet is what connects independent networks and computing devices together. 
@@ -59,7 +78,7 @@ The internet is made up of many layers that all work together to process and sen
 ### Creating an AWS Server Instance
 When creating an instance, be sure to select EC2 service then launch instance to open up a create instance window. 
 
-> [!Note]  
+> [!NOTE]  
 > Use naming conventions like `[owner]-[purpose]-[version]` when naming your instance
 
 Be sure to generate a secure shell key and store it in a safe place where you wont accidently commit it and wont share it with anyone else. 
@@ -85,7 +104,7 @@ chmod 600 youkeypairfile.pem
 ### Establishing an Elastic IP Address
 To ensure that your server IP address does not change, you can create an elastic IP address and associate it with your server instance. This will ensure that your server is always accessible at the same IP address. 
 
->[!Note]  
+>[!NOTE]  
 > Assigning an eleastic IP address will change the IP address for the server, but will not change again until it is released. If you terminate your server and make a new one, this address can be reused. That means if it is not being used and you do not release it, you will be charged for it. 
 
 
@@ -154,9 +173,7 @@ DNS, or Domain Name Service is a server that associates IP addresses with a uniq
 
 `A` name: aka address are straight mappings from a domain name IP address
 `CNAME` or cannonical name: are record maps from one domain name to another domain name (alias)
-> [!EXAMPLE]
->
-> BYU.edu and BYU.com map to the same IP.
+> Example: `BYU.edu` and `BYU.com` map to the same IP.
 
 When you put a domain name into a browser, the broswer checks if the name already exists in the cache. If not, it contacts a DNS server and gets the IP. If the name is not in the DNS cache, then the DNS server will request it from the authoritative name server. If its not there, an unknown domain name error will be thrown. 
 
