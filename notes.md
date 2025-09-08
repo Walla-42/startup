@@ -192,9 +192,9 @@ biomatchgames.click
 After you create a domain name, you must create a type A record to direct traffic to the correct IP using your established domain name. 
 
 > [!NOTE]
-
+>
 > *SOA*: Start of Authority record provides contact information about the owner of the domain.
-
+>
 > *NS*: Name Server record provides the names of the servers that are hosting the DNS records for this domain.
 
 
