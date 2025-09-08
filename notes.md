@@ -107,7 +107,7 @@ For example, in the domain name `www.example.com` the root domain is `example.co
 
 The root domain is represented by a secondary level domain and a top level domain (TLD). TLD are things like com, edu, gov or click. TLD's are controlled by ICANN, a govorning board of the internet.
 
-![domain image]("https://github.com/webprogramming260/.github/blob/main/profile/webServers/domainNames/domainNameParts.jpg?raw=true")
+![domain image](https://github.com/webprogramming260/.github/blob/main/profile/webServers/domainNames/domainNameParts.jpg?raw=true)
 
 Root domains can have any number of subdomains with their own IP addresses. 
 
