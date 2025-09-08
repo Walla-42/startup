@@ -50,3 +50,7 @@ coverage/
 /test-output/
 .DS_Store
 .__pycache__
+
+# keys
+production.pem
+
