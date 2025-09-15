@@ -2,11 +2,11 @@
 ### Table of Contents:
 - [Introduction](#introduction)
 - [Git](#git)
-- [Markdown Styling on GITHUB](#Github-Markdown)
+- [Markdown Styling on GITHUB](#github-markdown)
 - [The Internet](#the-internet)
 - [Amazon Web Services](#amazon-web-services)
 - [Domain Names](#domain-names)
-- [HTML](#HTML)
+- [HTML](#html)
 
 
 ## Introduction
@@ -213,7 +213,7 @@ Hyper Text Markup Language (HTML) provides foundational content structure that a
 - [Comments](#comments)
 - [Special Characters](#special-characters)
 - [Index.html](#block-vs-inline)
-- [HTML input elements](#HTML-input-elements)
+- [HTML input elements](#html-input-elements)
 
 
 
