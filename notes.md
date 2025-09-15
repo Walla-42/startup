@@ -212,7 +212,8 @@ Hyper Text Markup Language (HTML) provides foundational content structure that a
 - [HTML Element List](#html-element-list)
 - [Comments](#comments)
 - [Special Characters](#special-characters)
-- [Index.html](#index.html)
+- [Index.html](#block-vs-inline)
+- [HTML input elements](#HTML-input-elements)
 
 
 
@@ -371,6 +372,63 @@ A block element is meant to be a distinct block in the flow of the content struc
  that is a block element.</p>
 ```
 In the example above, the `<p>` element is a block element, while the `<span>` element is an inline element. The `<span>` element is used to apply styling or formatting to a specific portion of text within the `<p>` element without disrupting the flow of the paragraph.
+
+### HTML Input Elements
+HTML input elements are used to create interactive forms that allow users to input data. There are many different types of input elements, each with its own specific purpose.
+
+| Element    | Meaning                          | Example                                        |
+| ---------- | -------------------------------- | ---------------------------------------------- |
+| `form`     | Input container and submission   | `<form action="form.html" method="post">`      |
+| `fieldset` | Labeled input grouping           | `<fieldset> ... </fieldset>`                   |
+| `input`    | Multiple types of user input     | `<input type="" />`                            |
+| `select`   | Selection dropdown               | `<select><option>1</option></select>`          |
+| `optgroup` | Grouped selection dropdown       | `<optgroup><option>1</option></optgroup>`      |
+| `option`   | Selection option                 | `<option selected>option2</option>`            |
+| `textarea` | Multiline text input             | `<textarea></textarea>`                        |
+| `label`    | Individual input label           | `<label for="range">Range: </label>`           |
+| `output`   | Output of input                  | `<output for="range">0</output>`               |
+| `meter`    | Display value with a known range | `<meter min="0" max="100" value="50"></meter>` |
+
+Input elements can represnt many different types and can be set with the 'type' attribute. 
+
+| Type           | Meaning                           |
+| -------------- | --------------------------------- |
+| text           | Single line textual value         |
+| password       | Obscured password                 |
+| email          | Email address                     |
+| tel            | Telephone number                  |
+| url            | URL address                       |
+| number         | Numerical value                   |
+| checkbox       | Inclusive selection               |
+| radio          | Exclusive selection               |
+| range          | Range limited number              |
+| date           | Year, month, day                  |
+| datetime-local | Date and time                     |
+| month          | Year, month                       |
+| week           | Week of year                      |
+| color          | Color                             |
+| file           | Local file                        |
+| submit         | button to trigger form submission |
+
+Input elements must specify a type along with any other attributes associated with the element:
+**example**
+```html
+<label for="checkbox1">Check me</label> <input type="checkbox" name="varCheckbox" value="checkbox1" checked />
+```
+
+**common attributes**
+| Attribute | Meaning                                                                             |
+| --------- | ----------------------------------------------------------------------------------- |
+| name      | The name of the input. This is submitted as the name of the input if used in a form |
+| disabled  | Disables the ability for the user to interact with the input                        |
+| value     | The initial value of the input                                                      |
+| required  | Signifies that a value is required in order to be valid                             |
+
+![form visual](https://github.com/webprogramming260/.github/blob/main/profile/html/input/htmlInput.jpg?raw=true)
+
+>[!NOTE]
+> The pattern attribute allows you to restrict the input provided to the input form. It is a regular expression input.
+
 
 
 
