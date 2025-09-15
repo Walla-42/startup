@@ -6,6 +6,7 @@
 - [The Internet](#the-internet)
 - [Amazon Web Services](#amazon-web-services)
 - [Domain Names](#domain-names)
+- [HTML](#HTML)
 
 
 ## Introduction
@@ -196,5 +197,181 @@ After you create a domain name, you must create a type A record to direct traffi
 > *SOA*: Start of Authority record provides contact information about the owner of the domain.
 >
 > *NS*: Name Server record provides the names of the servers that are hosting the DNS records for this domain.
+
+## HTML
+Hyper Text Markup Language (HTML) provides foundational content structure that all web applications build on. 
+
+**Deeper Reading**
+- [MDN HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [W3C specification](https://html.spec.whatwg.org/multipage/)
+
+**Contents**
+- [Elements and Tags](#elements-and-tags)
+- [Attributes](#attributes)
+- [Hyperlinks](#hyperlinks)
+- [HTML Element List](#html-element-list)
+- [Comments](#comments)
+- [Special Characters](#special-characters)
+- [Index.html](#index.html)
+
+
+
+### Elements and Tags
+HTML is made up of elements and tags. Elements are the building blocks of HTML and are used to define the structure and content of a web page. Tags are used to mark the beginning and end of an element.
+
+**Example:**
+```html
+<html>
+  <head>
+    <title>My First Page</title>
+  </head>
+  <body>
+    <main>
+      <p>Hello world</p>
+    </main>
+  </body>
+</html>
+```
+
+In the example above, `<html>`, `<head>`, `<title>`, `<body>`, `<main>`, and `<p>` are all HTML tags. The content between the opening and closing tags is the content of the element.
+
+### Attributes
+Attributes describe the specific details of the element. 
+**Example:**
+```html
+<p id="hello" class="greeting">Hello World</p>
+```
+
+In the example above, the `<p>` element has two attributes: `id` and `class`. The `id` attribute is used to uniquely identify the element, while the `class` attribute is used to group elements together for styling purposes.
+
+### Hyperlinks
+Hyperlinks are used to link to other web pages or resources. They are created using the `<a>` tag and the `href` attribute.
+**Example:**
+```html
+<a href="https://byu.edu">Go to the Y</a>
+```
+In the example above, the `<a>` element creates a hyperlink to the BYU website. When the user clicks on the link, they will be taken to the specified URL.
+
+### HTML Element List
+Here is a small list of commonly used elements:
+| element   | meaning                                                                |
+| --------- | ---------------------------------------------------------------------- |
+| `html`    | The page container                                                     |
+| `head`    | Header information                                                     |
+| `title`   | Title of the page                                                      |
+| `meta`    | Metadata for the page such as character set or viewport settings       |
+| `script`  | JavaScript reference. Either a external reference, or inline           |
+| `include` | External content reference                                             |
+| `body`    | The entire content body of the page                                    |
+| `header`  | Header of the main content                                             |
+| `footer`  | Footer of the main content                                             |
+| `nav`     | Navigational inputs                                                    |
+| `main`    | Main content of the page                                               |
+| `section` | A section of the main content                                          |
+| `aside`   | Aside content from the main content                                    |
+| `div`     | A block division of content                                            |
+| `span`    | An inline span of content                                              |
+| `h<1-9>`  | Text heading. From h1, the highest level, down to h9, the lowest level |
+| `p`       | A paragraph of text                                                    |
+| `b`       | Bring attention                                                        |
+| `table`   | Table                                                                  |
+| `tr`      | Table row                                                              |
+| `th`      | Table header                                                           |
+| `td`      | Table data                                                             |
+| `ol,ul`   | Ordered or unordered list                                              |
+| `li`      | List item                                                              |
+| `a`       | Anchor the text to a hyperlink                                         |
+| `img`     | Graphical image reference                                              |
+| `dialog`  | Interactive component such as a confirmation                           |
+| `form`    | A collection of user input                                             |
+| `input`   | User input field                                                       |
+| `audio`   | Audio content                                                          |
+| `video`   | Video content                                                          |
+| `svg`     | Scalable vector graphic content                                        |
+| `iframe`  | Inline frame of another HTML page                                      |
+
+### comments
+```html
+<!-- This is how you write an HTML comment. That is all-->
+```
+
+### Special Characters
+These are characters reserved for use by HTML and must be escaped if used for another purpose inside the HTML document:
+| Character | Escape Sequence |
+|-----------|-----------------|
+| `<`       | `&lt;`          |
+| `>`       | `&gt;`          |
+| `&`       | `&amp;`         |
+| `"`       | `&quot;`        |
+| `'`       | `&apos;`        |
+
+The `&` can also be used to represent any unicode character.
+
+### other information
+The `index.html` file is the default file that is served when a user navigates to a web server without specifying a specific file.
+
+You must start any HTML document with the header tag `<!DOCTYPE html>` as this is what tells the renderer what type of document is present and its version. 
+
+### HTML Structure
+```html
+<body>
+  <p>Body</p>
+  <header>
+    <p>Header - <span>Span</span></p>
+    <nav>
+      Navigation
+      <div>Div</div>
+      <div>Div</div>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <p>Section</p>
+      <ul>
+        <li>List</li>
+        <li>List</li>
+        <li>List</li>
+      </ul>
+    </section>
+    <section>
+      <p>Section</p>
+      <table>
+        <tr>
+          <th>Table</th>
+          <th>Table</th>
+          <th>Table</th>
+        </tr>
+        <tr>
+          <td>table</td>
+          <td>table</td>
+          <td>table</td>
+        </tr>
+      </table>
+    </section>
+    <aside>
+      <p>Aside</p>
+    </aside>
+  </main>
+
+  <footer>
+    <div>Footer - <span>Span</span></div>
+  </footer>
+</body>
+```
+
+![HTML Render](https://github.com/webprogramming260/.github/blob/main/profile/html/structure/htmlStructure.jpg)
+
+### Block vs Inline elements
+A block element is meant to be a distinct block in the flow of the content structue. An inline element is menat to be inline with the content flow of a block element. 
+
+**Example**
+```html
+<p>This is a paragraph with an <span>inline span element</span> inside of it
+ that is a block element.</p>
+```
+In the example above, the `<p>` element is a block element, while the `<span>` element is an inline element. The `<span>` element is used to apply styling or formatting to a specific portion of text within the `<p>` element without disrupting the flow of the paragraph.
+
+
 
 
