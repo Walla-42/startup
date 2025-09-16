@@ -2,6 +2,7 @@
 <html lang="en">
     <header>
         <title>Genome Trivia</title>
+        <meta name="description" content="A molecule naming game where players identify as many molecules as possible within a time limit.">
     </header>
     <body>
         <header>
@@ -15,7 +16,6 @@
                 <fieldset>
                     <legend>Scorecard</legend>
                     <p id="score">Score: 0</p>
-                    <p id="question-number">Question: 1/10</p>
                     <p id="timer">Time Left: 30s</p>
                     <p id="correct-answers">Correct: 0</p>
                     <p id="incorrect-answers">Incorrect: 0</p>
@@ -23,14 +23,14 @@
             </div>
 
             <div id="question">
+                <!-- This is a placeholder for the PubChem API which will call images based on randomly generated molecule names-->
                 <img id="question-image" src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/tryptophan/PNG" alt="question-image">
 
                 <h2 id="question-text">What molecule is this?</h2>
 
                 <form id="quiz-form">
                     <div id="answer-entry">
-                        <label for="answer">Answer:</label>
-                        <input type="text" id="answer" name="answer" required><br/>
+                        <label for="answer">Answer: <input type="text" id="answer" name="answer" required><br/></label>
                     </div>
                     <button type="button" id="submit-button">Submit</button>
                 </form>
