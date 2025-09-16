@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <header>
+        <title>Genome Trivia</title>
+    </header>
+    <body>
+        <main>
+            <div id="Title">
+                <img src="../../images/StartupLogo.svg" alt="BioMatch Logo" width="150px" height="50px" id="Logo">
+                <h1>Welcome to BioMatch</h1>
+            </div>
+
+            <div id="scorecard">
+                <fieldset>
+                    <legend>Scorecard</legend>
+                    <p id="score">Score: 0</p>
+                    <p id="question-number">Question: 1/10</p>
+                    <p id="timer">Time Left: 30s</p>
+                    <p id="correct-answers">Correct: 0</p>
+                    <p id="incorrect-answers">Incorrect: 0</p>
+                </fieldset>
+            </div>
+
+            <div id="question">
+                <img id="question-image" src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/tryptophan/PNG" alt="question-image">
+
+                <h2 id="question-text">how many carbons are present in Tryptophan?</h2>
+
+                <form id="quiz-form">
+                    <div id="answer-options">
+                        <label for="optionA"><input type="radio" id="optionA" name="varRadio" value="A"/><span>A. </span>23</label>
+                
+                        <label for="optionB"><input type="radio" id="optionB" name="varRadio" value="B" /><span>B. </span>8</label><br>
+                    
+                        <label for="optionC"><input type="radio" id="OptionC" name="varRadio" value="C" /><span>C. </span>11</label>
+                        
+                        <label for="optionD"><input type="radio" id="OptionD" name="varRadio" value="D" /><span>D. </span>12</label><br>
+                    </div>
+                    <button type="button" id="submit-button">Submit</button>
+                </form>
+                <button type="button" id="quit-button" onclick="window.location.href='index.html'">Quit</button>
+            </div>
+        </main>
+    </body>
+</html>
