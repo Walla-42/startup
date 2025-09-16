@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <header>
+        <title>Genome Trivia</title>
+    </header>
+    <body>
+        <header>
+            <div id="Title">
+                <img src="../../images/StartupLogo.svg" alt="BioMatch Logo" width="150px" height="50px" id="Logo">
+                <h1>Welcome to BioMatch</h1>
+            </div>
+        </header>
+        <main>
+            <div id="scorecard">
+                <fieldset>
+                    <legend>Scorecard</legend>
+                    <p id="score">Score: 0</p>
+                    <p id="question-number">Question: 1/10</p>
+                    <p id="timer">Time Left: 30s</p>
+                    <p id="correct-answers">Correct: 0</p>
+                    <p id="incorrect-answers">Incorrect: 0</p>
+                </fieldset>
+            </div>
+
+            <div id="question">
+                <img id="question-image" src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/tryptophan/PNG" alt="question-image">
+
+                <h2 id="question-text">What molecule is this?</h2>
+
+                <form id="quiz-form">
+                    <div id="answer-entry">
+                        <label for="answer">Answer:</label>
+                        <input type="text" id="answer" name="answer" required><br/>
+                    </div>
+                    <button type="button" id="submit-button">Submit</button>
+                </form>
+                <button type="button" id="quit-button" onclick="window.location.href='home.html'">Quit</button>
+            </div>
+        </main>
+        <footer>
+            <hr />
+            <span>Contributor(s): Logan Wallace</span>
+            <br />
+            <a href="about.html">about</a>
+            <a href="https://www.github.com/walla-42/startup" target="_blank">Github</a>
+        </footer>
+    </body>
+</html>
