@@ -7,6 +7,7 @@
 - [Amazon Web Services](#amazon-web-services)
 - [Domain Names](#domain-names)
 - [HTML](#html)
+- [CSS](#css)
 
 
 ## Introduction
@@ -429,7 +430,217 @@ Input elements must specify a type along with any other attributes associated wi
 >[!NOTE]
 > The pattern attribute allows you to restrict the input provided to the input form. It is a regular expression input.
 
+## CSS
+CSS or Cascading Style Sheet is a way for the developer to render to create complex renderings of dynamic content that is responsive to the actions of the usre and the device the application is rendered on.
+
+### Rulesets
+CSS is concerned with defining rulesets for different elements
+
+![CSS ruleset definition image](https://github.com/webprogramming260/.github/blob/main/profile/css/introduction/cssDefinitions.jpg?raw=true)
+
+### Associating CSS with HTML
+1. Use the style attribute of an HTML element and assign one or more declarations
+```html
+<!-- Example-->
+ <p style="color:green">CSS</>
+```
+
+2. Use style tags to define CSS rules within an HTML document
+```html
+<!--Example-->
+<head>
+  <style>
+    p {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <p>CSS</p>
+</body>
+```
+
+3. Link a CSS document to the HTML document through a hyperlink reference `[Prefered Way]`
+```html
+<!--Example-->
+<!--HTM document-->
+<link rel="stylesheet" href="styles.css" />
+<!--CSS document styles.css-->
+p {
+  color:green;
+}
+```
+
+### Cascading Styles
+Syles applied at lower levels override upper level styling. Example: if main has text as red and p elements have text as blue and span elements have text as yellow, the span would override both the p and main styles. 
+
+### The box model
+CSS defines everything as boxes. When you apply styles, you are applying them to a region within the display that is a rectangular box. 
+
+The default width and height of an element is defined by the width and height of the content box.
+![the box model](https://github.com/webprogramming260/.github/blob/main/profile/css/introduction/cssBoxModel.jpg?raw=true)
+
+### Combinators
+Used for selecting specific elements outside of just a general selector.
+Types of combinators that can be used:
+
+| Combinator       | Meaning                    | Example        | Description                                |
+| ---------------- | -------------------------- | -------------- | ------------------------------------------ |
+| Descendant       | A list of descendants      | `body section` | Any section that is a descendant of a body |
+| Child            | A list of direct children  | `section > p`  | Any p that is a direct child of a section  |
+| General sibling  | A list of siblings         | `div ~ p`      | Any p that has a div sibling               |
+| Adjacent sibling | A list of adjacent sibling | `div + p`      | Any p that has an adjacent div sibling     |
 
 
+### Class Selector
+You can select a class for styling by using . notation.
+```css
+.summary {
+  font-weight: bold;
+}
+```
+you can also combine the element name and class selectors to select all paragraphs with a class of summary as such:
+```css
+p.summary {
+  font-weight: bold;
+}
+```
 
+### ID Selectors
+To target elements of a specific ID use the `#` symbol. 
+>[!NOTE] IDs should be unique within an HTML document and so this selection should target a specific >element.
+```css
+#physics{
+  border-left: solid 1em purple;
+}
+```
+
+### Attribute selector
+You can select elements based on their attributes by using an attribute selector. You use an attribute
+selector by the `element[attribute]` syntax. 
+```css
+p[class='summary']{
+  color: red;
+}
+```
+
+### Pseudo Selector
+CSS also defines a significant list of pseudo selectors which select based on positional relationships, mouse interactions, hyperlink visitation states, and attributes. We will give just one example. Suppose we want our purple highlight bar to appear only when the mouse hovers over the text. To accomplish this we can change our ID selector to select whenever a section is hovered over.
+
+```css
+section:hover {
+  border-left: solid 1em purple;
+}
+```
+
+### CSS Declarations
+
+CSS rule declarations specify a property and value to assign when the rule selector matches one or more elements. There are legions of possible properties defined for modifying the style of an HTML document. For our purposes we will discuss just a few of the more commonly used ones so that you can get a feel for wide variety of functionality they represent.
+
+| Property           | Value                              | Example             | Discussion                                                                     |
+| ------------------ | ---------------------------------- | ------------------- | ------------------------------------------------------------------------------ |
+| background-color   | color                              | `red`               | Fill the background color                                                      |
+| border             | color width style                  | `#fad solid medium` | Sets the border using shorthand where any or all of the values may be provided |
+| border-radius      | unit                               | `50%`               | The size of the border radius                                                  |
+| box-shadow         | x-offset y-offset blu-radius color | `2px 2px 2px gray`  | Creates a shadow                                                               |
+| columns            | number                             | `3`                 | Number of textual columns                                                      |
+| column-rule        | color width style                  | `solid thin black`  | Sets the border used between columns using border shorthand                    |
+| color              | color                              | `rgb(128, 0, 0)`    | Sets the text color                                                            |
+| cursor             | type                               | `grab`              | Sets the cursor to display when hovering over the element                      |
+| display            | type                               | `none`              | Defines how to display the element and its children                            |
+| filter             | filter-function                    | `grayscale(30%)`    | Applies a visual filter                                                        |
+| float              | direction                          | `right`             | Places the element to the left or right in the flow                            |
+| flex               |                                    |                     | Flex layout. Used for responsive design                                        |
+| font               | family size style                  | `Arial 1.2em bold`  | Defines the text font using shorthand                                          |
+| grid               |                                    |                     | Grid layout. Used for responsive design                                        |
+| height             | unit                               | `.25em`             | Sets the height of the box                                                     |
+| margin             | unit                               | `5px 5px 0 0`       | Sets the margin spacing                                                        |
+| max-[width/height] | unit                               | `20%`               | Restricts the width or height to no more than the unit                         |
+| min-[width/height] | unit                               | `10vh`              | Restricts the width or height to no less than the unit                         |
+| opacity            | number                             | `.9`                | Sets how opaque the element is                                                 |
+| overflow           | [visible/hidden/scroll/auto]       | `scroll`            | Defines what happens when the content does not fix in its box                  |
+| position           | [static/relative/absolute/sticky]  | `absolute`          | Defines how the element is positioned in the document                          |
+| padding            | unit                               | `1em 2em`           | Sets the padding spacing                                                       |
+| left               | unit                               | `10rem`             | The horizontal value of a positioned element                                   |
+| text-align         | [start/end/center/justify]         | `end`               | Defines how the text is aligned in the element                                 |
+| top                | unit                               | `50px`              | The vertical value of a positioned element                                     |
+| transform          | transform-function                 | `rotate(0.5turn)`   | Applies a transformation to the element                                        |
+| width              | unit                               | `25vmin`            | Sets the width of the box                                                      |
+| z-index            | number                             | `100`               | Controls the positioning of the element on the z axis                          |
+
+### Units
+Here is a list of the most commonly used units. All of the units are prefixed with a number when used as a property value.
+
+| Unit | Description                                                      |
+| ---- | ---------------------------------------------------------------- |
+| px   | The number of pixels                                             |
+| pt   | The number of points (1/72 of an inch)                           |
+| in   | The number of inches                                             |
+| cm   | The number of centimeters                                        |
+| %    | A percentage of the parent element                               |
+| em   | A multiplier of the width of the letter `m` in the parent's font |
+| rem  | A multiplier of the width of the letter `m` in the root's font   |
+| ex   | A multiplier of the height of the element's font                 |
+| vw   | A percentage of the viewport's width                             |
+| vh   | A percentage of the viewport's height                            |
+| vmin | A percentage of the viewport's smaller dimension                 |
+| vmax | A percentage of the viewport's larger dimension                  |
+
+### Color
+CSS defines multiple ways to describe color, ranging from representations familiar to programmers and ones familiar to layout designers and artists.
+
+| Method       | Example                   | Description                                                                                                                                                                                                       |
+| ------------ | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| keyword      | `red`                     | A set of predefined colors (e.g. white, cornflowerblue, darkslateblue)                                                                                                                                            |
+| RGB hex      | `#00FFAA22` or `#0FA2`    | Red, green, and blue as a hexadecimal number, with an optional alpha opacity                                                                                                                                      |
+| RGB function | `rgb(128, 255, 128, 0.5)` | Red, green, and blue as a percentage or number between 0 and 255, with an optional alpha opacity percentage                                                                                                       |
+| HSL          | `hsl(180, 30%, 90%, 0.5)` | Hue, saturation, and light, with an optional opacity percentage. Hue is the position on the 365 degree color wheel (red is 0 and 255). Saturation is how gray the color is, and light is how bright the color is. |
+
+
+### fonts
+the CSS font-family property defines what fonts should be used. There are default fonts such as `serif` `sans-serif`, `fixed`, `symbol` ect. 
+you can import fonts by hosting them on your server and declaring the font rule, or taking them from a font providor such as Google [Here](https://fonts.google.com/)
+```css
+@font-face {
+  font-family: 'Quicksand';
+  src: url('https://cs260.click/fonts/quicksand.ttf');
+}
+
+p {
+  font-family: Quicksand;
+}
+```
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Rubik Microbe&display=swap');
+
+p {
+  font-family: 'Rubik Microbe';
+}
+```
+
+### animations
+Animations can be done by setting the animation-name flag in the css body
+```css
+p{
+  text-align: center;
+  font-size: 20vh;
+
+  animation-name: demo
+  animation-duration: 3s;
+}
+
+@keyframes demo{
+  from{
+    font-size: 0h;
+  }
+  95% {
+    font-size: 21vh;
+  }
+  to {
+    font-size: 20vh:
+  }
+}
+```
+this allows us to specify a keyframe name which we will add frames to. CSS will specify a smooth transition between all the frames within the keyframes.
 
