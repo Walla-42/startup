@@ -9,33 +9,41 @@
                 <img src="../../images/StartupLogo.svg" alt="BioMatch Logo" width="150px" height="50px" id="Logo">
             </div>
         </header>
+        
         <main>
-            <!-- This is a place holder for the Leaderboard. Data for this will come from the database. -->
+            <!-- This is a place holder for the Leaderboard. Data for this will come from the database and updated live via websocket. -->
             <div class="leaderboard">
                 <h1>Leaderboards</h1>
                 <table>
-                    <tr class="leaderboard-header">
-                        <th>Game</th>
-                        <th>Username</th>
-                        <th>Score</th>
-                    </tr>
-                    <tr class="leaderboard-row">
-                        <td>Genome Trivia</td>
-                        <td>walla42</td>
-                        <td>10600</td>
-                    </tr>
-                    <tr class="leaderboard-row">
-                        <td>Name that Molecule</td>
-                        <td>jellybelly</td>
-                        <td>12000</td>
-                    </tr>
+                    <thead>
+                        <tr class="leaderboard-header">
+                            <th>#</th>
+                            <th>Game</th>
+                            <th>Username</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="leaderboard-row">
+                            <td>1</td>
+                            <td>Genome Trivia</td>
+                            <td>walla42</td>
+                            <td>10600</td>
+                        </tr>
+                        <tr class="leaderboard-row">
+                            <td>2</td>
+                            <td>Name that Molecule</td>
+                            <td>jellybelly</td>
+                            <td>12000</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
-
             <div class="navigation-buttons">
                 <button onclick="window.location.href='home.html'">Home</button>
             </div>
         </main>
+
         <footer>
             <hr />
             <span>Contributor(s): Logan Wallace</span>

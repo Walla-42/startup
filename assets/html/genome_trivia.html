@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- This page may not be fully implemented by the end of semester due to time constraints, but is planned here incase it does get developed.-->
 <html lang="en">
     <head>
         <title>Genome Trivia</title>
@@ -12,6 +13,7 @@
             </div>
         </header>
         <main>
+            <!--Place holder for score card information which will be updated as the game runs. This data at the end of the game will be saved in the database.-->
             <div id="scorecard">
                 <fieldset>
                     <legend>Scorecard</legend>
@@ -24,9 +26,10 @@
             </div>
 
             <div id="question">
-                <!-- This is a placeholder for the PubChem API which will call images based on randomly generated questions-->
+                <!-- This is a placeholder for the PubChem API which will call images based on randomly generated questions. -->
                 <img id="question-image" src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/tryptophan/PNG" alt="question-image">
 
+                <!-- These questions will come from the database as no public API exists for these specific questions -->
                 <h2 id="question-text">how many carbons are present in Tryptophan?</h2>
 
                 <form id="quiz-form">

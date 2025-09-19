@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    <!-- This is the main game for this project -->
     <head>
         <title>Genome Trivia</title>
         <meta name="description" content="A molecule naming game where players identify as many molecules as possible within a time limit.">
@@ -12,6 +13,7 @@
             </div>
         </header>
         <main>
+            <!-- This is a placeholder for the score card data which will be updated as the game is played. This data is stored in the database when the game ends. -->
             <div id="scorecard">
                 <fieldset>
                     <legend>Scorecard</legend>
@@ -23,10 +25,12 @@
             </div>
 
             <div id="question">
-                <!-- This is a placeholder for the PubChem API which will call images based on randomly generated molecule names-->
+                <!-- This is a placeholder for the PubChem API which will call images based on randomly generated molecule names. -->
                 <img id="question-image" src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/tryptophan/PNG" alt="question-image">
 
+                
                 <h2 id="question-text">What molecule is this?</h2>
+                <!-- Molecule names will be stored in the database -->
 
                 <form id="quiz-form">
                     <div id="answer-entry">
@@ -34,13 +38,17 @@
                     </div>
                     <button type="button" id="submit-button">Submit</button>
                 </form>
+
                 <button type="button" id="quit-button" onclick="window.location.href='home.html'">Quit</button>
             </div>
+
         </main>
         <footer>
+            
             <hr />
             <span>Contributor(s): Logan Wallace</span>
             <br />
+
             <div class="footer-links">
                 <a href="about.html">about</a>
                 <a href="https://www.github.com/walla-42/startup" target="_blank">Github</a>
