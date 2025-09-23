@@ -644,3 +644,108 @@ p{
 ```
 this allows us to specify a keyframe name which we will add frames to. CSS will specify a smooth transition between all the frames within the keyframes.
 
+## CSS Frameworks
+
+CSS frameworks provide pre-built functions and components commonly used in web applications. They help developers:
+
+- Save time by reusing patterns and code.
+- Create a consistent user experience across applications.
+- Leverage community-maintained, open-source resources.
+
+![CSS Frameworks](cssStateOfCss.jpg)
+
+**Source**: [_StateOfCSS CSS framework poll_](https://2021.stateofcss.com/en-US/technologies/css-frameworks)
+
+---
+
+### Tailwind CSS
+
+[Tailwind CSS](https://tailwindcss.com/) is a rising CSS framework with an associated component library: [Tailwind UI](https://tailwindui.com/).
+
+- **Popularity**: 46% general usage (2022 StateOfCSS poll)
+- **Retention**: 78%  
+- **Key idea**: Uses small utility classes applied directly to HTML elements rather than large CSS rulesets.
+
+Example:
+
+```html
+<div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+  <img class="w-24 h-24 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto" src="profile.png" />
+  <p class="text-lg font-medium">“Tailwind CSS”</p>
+</div>
+```
+
+### Bootstrap
+Bootstrap is a long-standing, popular CSS framework.
+- Pros: Active community, consistent UX.
+- Cons: Its popularity can make websites look generic.
+
+#### Getting Started
+You can include Bootstrap via a CDN:
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+  </head>
+  <body>
+    ...
+  </body>
+</html>
+```
+
+For Bootstrap components that require Javascript:
+```html
+<body>
+  ...
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+
+```
+
+**You can also install bootstrap via NPM**
+```sh
+npm install bootstrap
+```
+
+#### Using Bootstrap
+```html
+<!-- Bootstrap styled button -->
+<button type="button" class="btn btn-primary">Bootstrap</button>
+
+<!-- Default browser button -->
+<button type="button">Plain</button>
+```
+
+![Bootstrap button example image](https://github.com/webprogramming260/.github/blob/main/profile/css/frameworks/cssBootstrapBtn.png?raw=true)
+
+### Bootstrap Quick Reference Table
+
+| Element / Component       | Common Classes / Options                                           | Description / Notes |
+|----------------------------|-------------------------------------------------------------------|-------------------|
+| **Buttons**               | `btn`, `btn-primary`, `btn-secondary`, `btn-success`, `btn-danger`, `btn-warning`, `btn-info`, `btn-light`, `btn-dark`, `btn-link`, `btn-lg`, `btn-sm`, `btn-block` | Base button styling. Add color variants, sizes, and block/full-width. |
+| **Typography**            | `h1`–`h6`, `lead`, `display-1`–`display-6`, `text-center`, `text-left`, `text-right`, `text-muted`, `font-weight-bold`, `font-italic` | Headings, paragraphs, and text alignment/weight. |
+| **Alerts**                | `alert`, `alert-primary`, `alert-secondary`, `alert-success`, `alert-danger`, `alert-warning`, `alert-info`, `alert-light`, `alert-dark`, `alert-dismissible`, `fade`, `show` | Display contextual messages. Dismissible alerts need button with `data-bs-dismiss="alert"`. |
+| **Badges**                | `badge`, `bg-primary`, `bg-secondary`, `bg-success`, `bg-danger`, `bg-warning`, `bg-info`, `bg-light`, `bg-dark`, `rounded-pill` | Small count or label indicators. Can use pill-shaped style. |
+| **Cards**                 | `card`, `card-body`, `card-header`, `card-footer`, `card-title`, `card-text`, `card-img-top`, `card-img-bottom`, `text-center` | Flexible content containers for images, text, and actions. |
+| **Navbars**               | `navbar`, `navbar-expand-lg`, `navbar-light`, `navbar-dark`, `bg-light`, `bg-dark`, `navbar-brand`, `navbar-nav`, `nav-item`, `nav-link` | Responsive navigation bars. Expand classes control collapse behavior. |
+| **Forms**                 | `form-control`, `form-check`, `form-check-input`, `form-check-label`, `form-group`, `form-label`, `form-text`, `is-invalid`, `is-valid` | Input fields, checkboxes, radio buttons, validation styles. |
+| **Inputs / Buttons**      | `input-group`, `input-group-text`, `form-control`, `btn`, `btn-outline-primary` | Combine input with buttons or prepended/appended text. |
+| **Modals**                | `modal`, `modal-dialog`, `modal-content`, `modal-header`, `modal-body`, `modal-footer`, `fade`, `show`, `modal-lg`, `modal-sm` | Popup dialogs. Triggered via `data-bs-toggle="modal"` and `data-bs-target="#id"`. |
+| **Dropdowns**             | `dropdown`, `dropdown-menu`, `dropdown-item`, `dropdown-toggle`, `dropdown-divider`, `dropend`, `dropstart`, `dropup` | Toggleable menu for actions. Use `.show` to display programmatically. |
+| **Accordion / Collapse**  | `accordion`, `accordion-item`, `accordion-header`, `accordion-button`, `accordion-collapse`, `collapse`, `show` | Collapsible content panels, often for FAQs or grouped content. |
+| **Grid / Layout**         | `container`, `container-fluid`, `row`, `col`, `col-1`–`col-12`, `col-md-6`, `col-lg-4`, `d-flex`, `justify-content-center`, `align-items-center` | Responsive layout using 12-column grid. Flex utilities for alignment. |
+| **Images**                | `img-fluid`, `rounded`, `rounded-circle`, `img-thumbnail` | Responsive images, rounded corners, and circle avatars. |
+| **Tables**                | `table`, `table-striped`, `table-bordered`, `table-hover`, `table-sm`, `table-responsive`, `table-dark` | Styled tables with hover, borders, and responsive wrappers. |
+| **Pagination**            | `pagination`, `page-item`, `page-link`, `disabled`, `active` | Navigation through paginated content. |
+| **Breadcrumbs**           | `breadcrumb`, `breadcrumb-item`, `active` | Navigation indicators showing current page hierarchy. |
+| **Spinners / Loaders**    | `spinner-border`, `spinner-grow`, `text-primary`, `text-secondary`, `text-success`, `text-danger` | Loading indicators with optional color variants. |
+| **Utilities – Spacing**   | `m-{t|b|l|r|x|y}-{0-5}`, `p-{t|b|l|r|x|y}-{0-5}` | Margin and padding helpers. `m` = margin, `p` = padding; `{x|y}` = axis. |
+| **Utilities – Display**   | `d-none`, `d-inline`, `d-inline-block`, `d-block`, `d-flex`, `d-grid` | Show/hide or change display type. |
+| **Utilities – Text**      | `text-start`, `text-center`, `text-end`, `text-nowrap`, `text-truncate`, `text-lowercase`, `text-uppercase`, `text-capitalize` | Text alignment and transformation helpers. |
+| **Utilities – Colors**    | `bg-primary`, `bg-secondary`, `bg-success`, `bg-danger`, `bg-warning`, `bg-info`, `bg-light`, `bg-dark`, `text-primary`, `text-secondary`, etc. | Background and text color helpers. |
+| **Utilities – Flex**      | `d-flex`, `flex-row`, `flex-column`, `justify-content-start`, `justify-content-center`, `justify-content-between`, `align-items-start`, `align-items-center`, `align-items-end` | Flexbox helpers for alignment and layout. |
+| **Utilities – Sizing**    | `w-25`, `w-50`, `w-75`, `w-100`, `h-25`, `h-50`, `h-75`, `h-100` | Width and height helpers (percentage-based). |
+
