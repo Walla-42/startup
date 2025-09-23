@@ -77,16 +77,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
-
+- [x] **HTML pages** - HTML was added for the following pages: login.html, create_account.html, about.html, genome_trivia.html, home.html, index.html, leaderboard.html, name_that_molecule.html
+- [x] **Proper HTML element usage** - I added elements for body, main, footer, header, head, nav, and form
+- [x] **Links** - all nav buttons link to their corresponding pages. An external link to github was also added in the footer section next to the about link.
+- [x] **Text** - Text for the web page was added in the about.html page as well as other places were welcomes (home.html) are utilized. 
+- [x] **3rd party API placeholder** - an API placeholder (with an image call) was put in both the genome_trivia.html and name_that_molecule.html file with a comment denoting the placeholder.
+- [x] **Images** - Logo images were input into the web applicaiton and API calls provided the rest of the images.
+- [x] **Login placeholder** - A login and create account (index.html, create_account.html) page were implemented with login and create account place holders. 
+- [x] **DB data placeholder** - The leaderboard page (leaderboard.html) was implemented and has placeholders for data that will come from the database. 
+- [x] **WebSocket placeholder** - A live websocket message board placeholder was implemented on the home screen in home.html.
 ## 🚀 CSS deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
