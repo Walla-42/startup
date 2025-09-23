@@ -1,4 +1,4 @@
-![startup-logo](images/StartupLogo.svg)
+![startup-logo](assets/images/StartupLogo.svg)
 
 [My Notes](notes.md)
 
