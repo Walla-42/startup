@@ -1,6 +1,6 @@
 
 header {
-    background: #f8f9fa;
+    background: #e4e4e4db;
     padding: 10px;
     text-align: center;
 }
@@ -11,9 +11,28 @@ header {
     align-items: center;
 }
 
+#Introduction-message h1{
+    color: white;
+    font-size: 100px;
+}
+
+#Introduction-message {
+    color: green;
+    font-size: 30px;
+    justify-content: center;
+}
+
+#signup-section h2{
+    display: flex;
+    align-items: left;
+    font-size: 50px;
+    font-weight: bold;
+}
+
 main {
     display: flex;
     flex-direction: row; 
+    font-family: arial;
     min-height: calc(100vh - 100px);
     width: 100%; 
 }
@@ -26,9 +45,9 @@ main {
     align-items: center; 
     justify-content: center; 
     padding: 20px;
-    max-height: 100%;
-    min-height: 400px; 
+    min-height: calc(100vh - 100px); 
     box-sizing: border-box; 
+    border-right: 6px solid #04b032;
 }
 
 .right-column {
@@ -40,16 +59,24 @@ main {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    min-height: 400px; 
-    box-sizing: border-box; 
+    min-height: calc(100vh-100px); 
+}
+
+.login-inputs {
+    width: 300px;
+    padding: 10px;    
+    margin: 10px;
 }
 
 .login-button {
-    color: darkolivegreen;
+    color: rgb(255, 255, 255);
+    background-color: #098129;
     font-weight: bold;
     padding: 5px;
     align-items: center;
     border-radius: 10px;
+    border: 3px solid #04b032;
+    margin: 10px;
 }
 
 footer {
