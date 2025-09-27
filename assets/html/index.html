@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width,initial-scale=1" />
 
         <!-- local css links -->
-        <link rel="stylesheet" href="/css/main.css" />
-        <link rel="stylesheet" href="/css/about.css" />
+        <link rel="stylesheet" href="../css/main.css" />
+        <link rel="stylesheet" href="../css/login.css" />
 
         <!-- bootstrap CSS framework -->
         <link
@@ -29,20 +29,20 @@
                 <p>Your gateway to competitive molecular biology quizzes!</p>
             </div>
 
-            <form method="get" action="home.html">
-                <div id="login-section">
-                    <fieldset>
-                        <legend>Login</legend>
-                        <label for="username">Username:</label>
-                        <input type="text" id="username" name="username" placeholder="username" required><br/>
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" placeholder="password" required><br/>
-                        <button type="submit" id="login-button">Login</button>
-                    </fieldset>
-                </div>
-            </form>
+            <div id="login-section">
+                <form method="get" action="home.html">
+                        <fieldset>
+                            <legend>Login</legend>
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" placeholder="username" required><br/>
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" placeholder="password" required><br/>
+                            <button type="submit" class="login-button">Login</button>
+                        </fieldset>
+                </form>
+            </div>
             <div id="signup-section">
-                <p>Don't have an account? <button type="button" id="signup-button" onclick="window.location.href='create_account.html'">Sign Up</button></p>
+                <p>Don't have an account? <button type="button" class="login-button" onclick="window.location.href='create_account.html'">Sign Up</button></p>
             </div>  
         </main>
         <footer>
