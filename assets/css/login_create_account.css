@@ -12,12 +12,13 @@ header {
 }
 
 #Introduction-message h1{
-    color: white;
+    color: green;
     font-size: 100px;
+    font-weight: bold;
 }
 
 #Introduction-message {
-    color: green;
+    color: white;
     font-size: 30px;
     justify-content: center;
 }
@@ -37,6 +38,7 @@ main {
     width: 100%; 
     align-items: stretch;
     justify-content: stretch;
+    position: relative;
 }
 
 .left-column {
@@ -48,12 +50,44 @@ main {
     justify-content: center; 
     padding: 20px;
     box-sizing: border-box; 
-    border-right: 6px solid #04b032;
+    position:relative;
+}
+
+/* Testing to see if this works for a single line */
+.left-column::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        #333333 0%,
+        #333333 30%,
+        #04b032 40%,
+        #04b032 60%,
+        #333333 70%,
+        #333333 100%
+    );
+    background-size: 100% 200%; 
+    background-position: 0% 0%; 
+    animation: smoothBounce 2s ease-in-out infinite alternate;
+    z-index: 1;
+}
+
+@keyframes smoothBounce {
+    0% {
+        background-position: 0% 0%; 
+    }
+    100% {
+        background-position: 0% 100%; 
+    }
 }
 
 .right-column {
-    background-color: white;
-    color: black;
+    background-color: rgba(255, 255, 255, 0.916);
+    color: rgb(0, 0, 0);
     flex: 1; 
     display: flex;
     flex-direction: column;
@@ -72,11 +106,13 @@ main {
     color: rgb(255, 255, 255);
     background-color: #098129;
     font-weight: bold;
-    padding: 5px;
+    padding: 5px 20px;
     align-items: center;
     border-radius: 10px;
     border: 3px solid #04b032;
-    margin: 10px;
+    margin: 20px auto;
+    cursor: pointer;
+    display:block;
 }
 
 footer {
