@@ -97,9 +97,11 @@ main {
 }
 
 .login-inputs {
-    width: 300px;
-    padding: 10px;    
-    margin: 10px;
+    width: 450px !important; 
+    padding: 5px;    
+    border: 3px solid green;
+    margin: 5px;
+    border-radius: 10px;
 }
 
 .login-button {
@@ -118,4 +120,50 @@ main {
 footer {
     background: #e4e4e4db;
     text-align: center;
+}
+
+@media (max-width: 1000px) {
+    main {
+        flex-direction: column; 
+        width: 100vw; 
+        max-width: 100%; 
+        overflow-x: hidden; 
+    }
+    
+    .left-column {
+        flex: 0 0 auto; 
+        min-height: 200px; 
+        width: 100%; 
+        padding: 15px; 
+    }
+    
+    .left-column::after {
+        visibility: hidden;
+    }
+    
+    .right-column {
+        flex: 1;
+        width: 100%; 
+        padding: 20px 15px;
+    }
+    
+    #Introduction-message h1 {
+        font-size: 48px; 
+        text-align: center;
+    }
+    
+    #Introduction-message {
+        font-size: 18px; 
+        text-align: center;
+    }
+    
+    #signup-section h2 {
+        font-size: 32px; 
+        justify-content: center;
+    }
+    
+    .login-inputs {
+        width: 90%; 
+        max-width: 690px; 
+    }
 }
