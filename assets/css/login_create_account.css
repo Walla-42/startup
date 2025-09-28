@@ -97,7 +97,7 @@ main {
 }
 
 .login-inputs {
-    width: 450px !important; 
+    width: 450px; 
     padding: 5px;    
     border: 3px solid green;
     margin: 5px;
@@ -127,7 +127,7 @@ footer {
         flex-direction: column; 
         width: 100vw; 
         max-width: 100%; 
-        overflow-x: hidden; 
+        /* overflow-x: hidden;  */
     }
     
     .left-column {
@@ -163,7 +163,8 @@ footer {
     }
     
     .login-inputs {
-        width: 90%; 
-        max-width: 690px; 
+        width: 90vw; 
+        max-width: 450px;
+        min-width: 200px;
     }
 }
