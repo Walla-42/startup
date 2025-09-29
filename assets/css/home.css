@@ -1,0 +1,35 @@
+#player-name {
+    font-size: 14px;
+}
+
+#user-login-info {
+    align-items: left;
+    display: block;
+    justify-content: left;
+}
+
+#GameButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.game-button {
+    display: flex;
+    margin: 10px;
+    font-size: 28px;
+    color: white;
+    height: 200px;
+    width: 300px;
+    border-radius: 10px;
+}
+
+.nav-button {
+    margin: 10px;
+}
+
+main {
+    background-color: rgb(255, 255, 255);
+}

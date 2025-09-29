@@ -21,16 +21,15 @@
         <header>
             <div id="Title">
                 <img src="../images/StartupLogo.svg" alt="BioMatch Logo" width="150px" height="50px" id="Logo">
-                
             </div>
         </header>
         <main>
-            <div>
+            <div id="user-login-info">
                 <p>Logged in as: <span id="player-name">current-user</span></p>
             </div>
             <div id="GameButtons">
-                <button onclick="window.location.href='genome_trivia.html'">Genome Trivia</button>
-                <button onclick="window.location.href='name_that_molecule.html'">Name That Molecule</button>
+                <button onclick="window.location.href='genome_trivia.html'" class="game-button button">Genome Trivia</button>
+                <button onclick="window.location.href='name_that_molecule.html'" class="game-button button">Name That Molecule</button>
             </div>
 
             <!-- Place holder for server messages updated by websocket -->
@@ -39,9 +38,9 @@
             </div>
 
             <nav class="navigation-buttons">
-                <button onclick="window.location.href='leaderboard.html'">Leaderboards</button>
-                <button onclick="window.location.href='index.html'">Logout</button>
-                <button onclick="window.open('https://www.github.com/walla-42/startup', '_blank')">Github</button>
+                <button onclick="window.location.href='index.html'" class="nav-button button">Logout</button>
+                <button onclick="window.location.href='leaderboard.html'" class="nav-button button">Leaderboards</button>
+                <button onclick="window.open('https://www.github.com/walla-42/startup', '_blank')" class="nav-button button">Github</button>
             </nav>
 
         </main>
