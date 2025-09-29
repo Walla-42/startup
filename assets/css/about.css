@@ -1,0 +1,15 @@
+#about-section h2 {
+    font-size: 28px;
+    color: black;
+    justify-content: left;
+    margin: 20px;
+    padding: 10px;
+}
+
+#about-section p {
+    font-size: 16px;
+    color: green;
+    justify-content: left;
+    margin: 20px;
+    padding: 10px;
+}
