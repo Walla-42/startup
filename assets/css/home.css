@@ -1,11 +1,14 @@
 #player-name {
-    font-size: 14px;
+    color: green;
+    font-weight: bold;
 }
 
-#user-login-info {
+.user-login-info {
     align-items: left;
-    display: block;
     justify-content: left;
+    display:flex;
+    font-size: 14px;
+    position: relative;
 }
 
 #GameButtons {
@@ -30,6 +33,20 @@
     margin: 10px;
 }
 
-main {
-    background-color: rgb(255, 255, 255);
+
+#websocket-user {
+    color: rgb(2, 193, 11);
+}
+
+.live-updates {
+    display: flex;
+    font-weight: bold;
+    width: 90vh;
+    height: 100px;
+    padding: 10px;
+    justify-items: center;
+    position: absolute;
+    bottom: 30vh;
+    border: 3px solid green;
+    border-radius: 10px;
 }

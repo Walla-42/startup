@@ -26,6 +26,7 @@
 main {
     display: flex;
     flex-direction: row; 
+    justify-content: space-around;
     font-family: arial;
     flex: 1;
     width: 100%; 
