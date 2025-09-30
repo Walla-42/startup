@@ -208,7 +208,7 @@ a {
         order: 2;
         width: 90%;
         max-width: 400px;
-        margin: 10px auto;
+        margin: 20px auto;
         padding: 5px 10px;
         flex-direction: row;
         align-items: center;
@@ -217,8 +217,7 @@ a {
         background: white;
         border-radius: 8px;
         border: 3px solid green;
-        height: 20px;
-        max-height: 20px;
+        height: 25px;
     }
     
     .game-scorecard fieldset {
@@ -242,9 +241,8 @@ a {
     #incorrect-answers {
         display: flex !important;
         flex: 1;
-        margin: 10px;
-        padding: 10px;
-        border-radius: 8px;
+        margin: 0px;
+        padding: 0px;
         background: white;
         font-size: 10px;
         font-weight: bold;
