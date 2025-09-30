@@ -69,7 +69,6 @@ a {
   color: green;
 }
 
-/* Mobile responsiveness for small screens */
 @media (max-width: 768px) {
   header {
     flex: 0 0 70px;
