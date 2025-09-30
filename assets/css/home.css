@@ -24,11 +24,11 @@
 .game-button {
     display: flex;
     margin: 10px;
-    font-size: 28px;
+    font-size: clamp(18px, 4vw, 28px);
     background-color: #000000d4;
     color: green;
-    height: 200px;
-    width: 300px;
+    height: clamp(200px, 30vh, 400px);
+    width: clamp(200px, 30vw, 400px);
     border-radius: 10px;
 }
 
@@ -43,15 +43,26 @@
 
 .live-updates {
     display: flex;
+    justify-content: center;
     font-weight: bold;
-    color:white;
-    width: 90vh;
-    height: 100px;
-    margin: 20x;
-    padding: 10px;
-    justify-items: center;
-    bottom: 30vh;
+    color: white;
+    width: clamp(100px, 90vw, 600px);
+    height: clamp(50px, 30vh, 400px);
+    margin: auto 1rem 2rem 1rem;
+    margin-top: auto;
+    padding: 1rem;
     border: 3px solid green;
     background-color: #000000d4;
     border-radius: 10px;
+    font-size: clamp(11px, 2vw, 16px);
+}
+
+#websocket-game {
+    color: yellow;
+}
+
+@media (max-width: 600px) {
+  .GameButtons {
+    flex-direction: row;
+  }
 }

@@ -40,6 +40,7 @@ main {
 .button {
     color: rgb(255, 255, 255);
     font-weight: bold;
+    display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -68,15 +69,70 @@ a {
   color: green;
 }
 
+/* Mobile responsiveness for small screens */
+@media (max-width: 768px) {
+  header {
+    flex: 0 0 70px;
+    padding: 5px 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  header #Title {
+    margin-bottom: 3px;
+  }
+  
+  header #Title img {
+    width: 120px;
+    height: 40px;
+  }
+  
+  header nav {
+    gap: 5px;
+  }
+  
+  .button {
+    padding: 4px 15px;
+    margin: 5px;
+    font-size: 14px;
+    max-width: 80%;
+    text-align: center;
+  }
+  
+  .nav-button {
+    padding: 3px 12px;
+    font-size: 12px;
+    margin: 3px;
+    text-align: center;
+  }
+}
+
 @media (max-height: 600px) {
   header {
-    display: none;
+    flex: 0 0 60px;
+    padding: 3px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
+  
+  header #Title {
+    margin-bottom: 2px;
+  }
+  
+  header #Title img {
+    width: 100px;
+    height: 35px;
+  }
+  
+  header nav {
+    gap: 3px;
+  }
+  
   footer {
-    display: none;
-  }
-  main {
-    flex: 1 100vh;
+    flex: 0 0 15px;
+    padding: 5px;
   }
 }
 
