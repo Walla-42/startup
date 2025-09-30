@@ -28,9 +28,9 @@
                 <button onclick="window.location.href='home.html'" class="nav-button button">Quit</button>
             </nav>
         </header>
-        <main>
+        <main class="game-layout">
             <!--Place holder for score card information which will be updated as the game runs. This data at the end of the game will be saved in the database.-->
-            <div class="score-card">
+            <div class="game-scorecard">
                 <fieldset>
                     <legend>Scorecard</legend>
                     <p id="score">Score: 0</p>
@@ -41,14 +41,14 @@
                 </fieldset>
             </div>
 
-            <div class="question">
+            <div class="game-question">
                 <!-- This is a placeholder for the PubChem API which will call images based on randomly generated questions. -->
-                <img id="question-image" src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/tryptophan/PNG" alt="question-image">
+                <img id="question-image" class="game-question-image" src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/tryptophan/PNG" alt="question-image">
 
                 <!-- These questions will come from the database as no public API exists for these specific questions -->
-                <h3 id="question-text">how many carbons are present in Tryptophan?</h2>
+                <h3 id="question-text" class="game-question-text">how many carbons are present in Tryptophan?</h2>
 
-                <form id="quiz-form">
+                <form id="quiz-form" class="game-form">
                     <div class="answer-options">
                         <label for="optionA"><input type="radio" id="optionA" name="varRadio" value="A"/><span>A. </span>23</label>
                 

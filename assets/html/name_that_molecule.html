@@ -29,9 +29,9 @@
                 <button onclick="window.location.href='home.html'" class="nav-button button">Quit</button>
             </nav>
         </header>
-        <main>
+        <main class="game-layout">
             <!-- This is a placeholder for the score card data which will be updated as the game is played. This data is stored in the database when the game ends. -->
-            <div class="scorecard">
+            <div class="game-scorecard">
                 <fieldset>
                     <legend>Scorecard</legend>
                     <p id="score">Score: 0</p>
@@ -41,15 +41,15 @@
                 </fieldset>
             </div>
 
-            <div class="question">
+            <div class="game-question">
                 <!-- This is a placeholder for the PubChem API which will call images based on randomly generated molecule names. -->
-                <img id="question-image" src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/tryptophan/PNG" alt="question-image">
+                <img id="question-image" class="game-question-image" src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/tryptophan/PNG" alt="question-image">
 
                 
-                <h3 id="question-text">What molecule is this?</h2>
+                <h3 id="question-text" class="game-question-text">What molecule is this?</h2>
                 <!-- Molecule names will be stored in the database -->
 
-                <form class="quiz-form">
+                <form class="game-form">
                     <div id="answer-entry">
                         <label for="answer">Answer: <input type="text" id="answer" name="answer" required><br/></label>
                     </div>
