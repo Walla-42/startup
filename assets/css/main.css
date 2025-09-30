@@ -231,6 +231,10 @@ a {
         width: 100%;
         gap: 5px;
     }
+
+    .game-scorecard p:not(#timer):not(#correct-answers):not(#incorrect-answers) {
+        display: none !important;
+    }
     
     .game-scorecard legend {
         display: none;
