@@ -27,8 +27,8 @@
     font-size: clamp(18px, 4vw, 28px);
     background-color: #000000d4;
     color: green;
-    height: clamp(200px, 30vh, 400px);
-    width: clamp(200px, 30vw, 400px);
+    height: clamp(100px, 30vh, 400px);
+    width: clamp(100px, 30vw, 400px);
     border-radius: 10px;
 }
 

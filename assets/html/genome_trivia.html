@@ -30,7 +30,7 @@
         </header>
         <main>
             <!--Place holder for score card information which will be updated as the game runs. This data at the end of the game will be saved in the database.-->
-            <div id="scorecard">
+            <div class="score-card">
                 <fieldset>
                     <legend>Scorecard</legend>
                     <p id="score">Score: 0</p>
@@ -41,7 +41,7 @@
                 </fieldset>
             </div>
 
-            <div id="question">
+            <div class="question">
                 <!-- This is a placeholder for the PubChem API which will call images based on randomly generated questions. -->
                 <img id="question-image" src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/tryptophan/PNG" alt="question-image">
 
@@ -49,14 +49,14 @@
                 <h3 id="question-text">how many carbons are present in Tryptophan?</h2>
 
                 <form id="quiz-form">
-                    <div id="answer-options">
+                    <div class="answer-options">
                         <label for="optionA"><input type="radio" id="optionA" name="varRadio" value="A"/><span>A. </span>23</label>
                 
                         <label for="optionB"><input type="radio" id="optionB" name="varRadio" value="B" /><span>B. </span>8</label><br>
                     
-                        <label for="optionC"><input type="radio" id="OptionC" name="varRadio" value="C" /><span>C. </span>11</label>
+                        <label for="optionC"><input type="radio" id="optionC" name="varRadio" value="C" /><span>C. </span>11</label>
                         
-                        <label for="optionD"><input type="radio" id="OptionD" name="varRadio" value="D" /><span>D. </span>12</label><br>
+                        <label for="optionD"><input type="radio" id="optionD" name="varRadio" value="D" /><span>D. </span>12</label><br>
                     </div>
                     <button type="button" class="button">Submit</button>
                 </form>

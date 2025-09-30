@@ -1,0 +1,124 @@
+main {
+    flex-direction: row;
+}
+
+.score-card {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-self: flex-start;
+    margin: 20px;
+    padding: 20px;
+    border: 3px solid green;
+    width: clamp(200px, 25vw, 300px);
+    border-radius: 15px;
+}
+
+.score-card legend {
+    font-weight: bold;
+    font-size: 18px;
+    color: #000000;
+    padding: 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.score-card p {
+    margin: 8px 0;
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#correct-answers {
+    color: #27ae60 !important;
+}
+
+#incorrect-answers {
+    color: #e74c3c !important;
+}
+
+.question {
+    display: flex;
+    flex: 6;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+#question-image {
+    height: clamp(100px, 50vh, 400px);
+    width: clamp(100px, 50vh, 400px);
+    border: 3px solid green;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+.answer-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 500px;
+}
+
+.answer-options label:nth-of-type(1) {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.answer-options label:nth-of-type(2) {
+    grid-column: 1; 
+    grid-row: 2;
+}
+
+.answer-options label:nth-of-type(3) {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.answer-options label:nth-of-type(4) {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.answer-options label {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border: 2px solid #04b032;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.answer-options label:hover {
+    background-color: rgba(4, 176, 50, 0.1);
+    border-color: #12941d;
+    transform: translateY(-1px);
+}
+
+.answer-options input[type="radio"] {
+    margin-right: 12px;
+    transform: scale(1.2);
+    accent-color: #04b032;
+}
+
+.answer-options input[type="radio"]:checked + span {
+    color: black;
+    font-weight: bold;
+}
+
+.answer-options label:has(input:checked) {
+    background-color: rgba(4, 176, 50, 0.2);
+    border-color: #04b032;
+    box-shadow: 0 2px 8px rgba(4, 176, 50, 0.3);
+}
+
