@@ -54,9 +54,6 @@
         display: none !important;
     }
     
-    .game-scorecard p:not(#timer):not(#correct-answers):not(#incorrect-answers) {
-        display: none !important;
-    }
 }
 
 @media (max-width: 500px) {
