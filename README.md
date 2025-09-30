@@ -90,12 +90,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Header, footer, and main content body** - I did not complete this part of the deliverable.
-- [ ] **Navigation elements** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing** - I did not complete this part of the deliverable.
-- [ ] **Application elements** - I did not complete this part of the deliverable.
-- [ ] **Application text content** - I did not complete this part of the deliverable.
-- [ ] **Application images** - I did not complete this part of the deliverable.
+- [x] **Header, footer, and main content body** - Added header, footer, styles to the main.css + added styling to all main body elements to separate thier contents using flex. 
+- [x] **Navigation elements** - Standardized styling across all nav elements and buttons and put these styles in the main.cpp.
+- [x] **Responsive to window resizing** - used flex to manage window resizing and @media tags to manage content placement at certain size points to handle correct display of webpage across multiple browser window sizes. 
+- [x] **Application elements** - Added style to all application elements including buttons, score boxes, tables ect. 
+- [x] **Application text content** - Text displayed on the questions and for the about.html page have been styled to appear neat and uniform with the rest of the page styling. 
+- [x] **Application images** - Images, including the biomatch logo have been sized and change with the size of the page. 
 
 ## 🚀 React part 1: Routing deliverable
 
