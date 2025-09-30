@@ -31,7 +31,7 @@
         </header>
         <main>
             <!-- This is a placeholder for the score card data which will be updated as the game is played. This data is stored in the database when the game ends. -->
-            <div id="scorecard">
+            <div class="scorecard">
                 <fieldset>
                     <legend>Scorecard</legend>
                     <p id="score">Score: 0</p>
@@ -41,7 +41,7 @@
                 </fieldset>
             </div>
 
-            <div id="question">
+            <div class="question">
                 <!-- This is a placeholder for the PubChem API which will call images based on randomly generated molecule names. -->
                 <img id="question-image" src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/tryptophan/PNG" alt="question-image">
 
@@ -49,7 +49,7 @@
                 <h3 id="question-text">What molecule is this?</h2>
                 <!-- Molecule names will be stored in the database -->
 
-                <form id="quiz-form">
+                <form class="quiz-form">
                     <div id="answer-entry">
                         <label for="answer">Answer: <input type="text" id="answer" name="answer" required><br/></label>
                     </div>
