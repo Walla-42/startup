@@ -4,14 +4,16 @@
 }
 
 .user-login-info {
+    margin: 10px;
     align-items: left;
     justify-content: left;
+    color: black;
     display:flex;
     font-size: 14px;
     position: relative;
 }
 
-#GameButtons {
+.GameButtons {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,7 +25,8 @@
     display: flex;
     margin: 10px;
     font-size: 28px;
-    color: white;
+    background-color: #000000d4;
+    color: green;
     height: 200px;
     width: 300px;
     border-radius: 10px;
@@ -41,12 +44,14 @@
 .live-updates {
     display: flex;
     font-weight: bold;
+    color:white;
     width: 90vh;
     height: 100px;
+    margin: 20x;
     padding: 10px;
     justify-items: center;
-    position: absolute;
     bottom: 30vh;
     border: 3px solid green;
+    background-color: #000000d4;
     border-radius: 10px;
 }

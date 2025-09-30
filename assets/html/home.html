@@ -22,12 +22,17 @@
             <div id="Title">
                 <a href="home.html"><img src="../images/StartupLogo.svg" alt="BioMatch Logo" width="150px" height="50px" id="Logo"></a>
             </div>
+            <nav class="navigation-buttons">
+                <button onclick="window.location.href='index.html'" class="nav-button button">Logout</button>
+                <button onclick="window.location.href='leaderboard.html'" class="nav-button button">Leaderboards</button>
+                <button onclick="window.open('https://www.github.com/walla-42/startup', '_blank')" class="nav-button button">Github</button>
+            </nav>
         </header>
         <main>
             <div class="user-login-info">
                 <p>Logged in as: <span id="player-name">current-user</span></p>
             </div>
-            <div id="GameButtons">
+            <div class="GameButtons">
                 <button onclick="window.location.href='genome_trivia.html'" class="game-button button">Genome Trivia</button>
                 <button onclick="window.location.href='name_that_molecule.html'" class="game-button button">Name That Molecule</button>
             </div>
@@ -37,15 +42,8 @@
                 <p><span id="websocket-user">Walla42</span> has achieved a new highscore in <span id="websocket-game">Name That Molecule</span>!</p>
             </div>
 
-            <nav class="navigation-buttons">
-                <button onclick="window.location.href='index.html'" class="nav-button button">Logout</button>
-                <button onclick="window.location.href='leaderboard.html'" class="nav-button button">Leaderboards</button>
-                <button onclick="window.open('https://www.github.com/walla-42/startup', '_blank')" class="nav-button button">Github</button>
-            </nav>
-
         </main>
         <footer>
-            <hr />
             <span>Contributor(s): Logan Wallace</span>
             <br />
             <a href="about.html">about</a>

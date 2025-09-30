@@ -10,16 +10,24 @@ header {
     flex: 0 0 80px;
     background: #e4e4e4db;
     padding: 10px;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav {
-  position:absolute;
-  bottom: 10vh;
+header #Title {
+    display: flex;
+    align-items: center;
+}
+
+header nav {
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
 main {
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.916);
     display: flex;
     flex-direction: column;
     font-family: arial;
@@ -50,8 +58,14 @@ main {
 
 footer {
     flex: 0 0 20px;
-    background: #e4e4e4db;
+    background: #000000d4;
+    color: white;
     text-align: center;
+    border-top: 4px solid green;
+}
+
+a {
+  color: green;
 }
 
 @media (max-height: 600px) {
@@ -65,3 +79,4 @@ footer {
     flex: 1 100vh;
   }
 }
+
