@@ -1,64 +1,5 @@
-main {
-    flex-direction: row;
-}
-
-.score-card {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    align-self: flex-start;
-    margin: 20px;
-    padding: 20px;
-    border: 3px solid green;
-    width: clamp(200px, 25vw, 300px);
-    border-radius: 15px;
-}
-
-.score-card legend {
-    font-weight: bold;
-    font-size: 18px;
-    color: #000000;
-    padding: 0 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.score-card p {
-    margin: 8px 0;
-    font-weight: 600;
-    font-size: 14px;
-    color: #333;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#correct-answers {
-    color: #27ae60 !important;
-}
-
-#incorrect-answers {
-    color: #e74c3c !important;
-}
-
-.question {
-    display: flex;
-    flex: 8;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-}
-
-#question-image {
-    height: clamp(100px, 50vh, 400px);
-    width: clamp(100px, 50vh, 400px);
-    border: 3px solid green;
-    border-radius: 10px;
-    object-fit: contain;
-}
-
-#question-text {
-    font-weight: bold;
+.game-question {
+    flex: 8; 
 }
 
 .answer-options {
@@ -123,40 +64,7 @@ main {
     border-color: green;
 }
 
-#quiz-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-#quiz-form .button {
-    margin-top: 5px;
-}
-
 @media (max-width: 800px) {
-    main {
-        flex-direction: column;
-    }
-    
-    .question {
-        flex: none;
-        margin: 10px;
-        order: 1;
-        width: 95%;
-        max-width: 500px;
-    }
-    
-    #question-text {
-        font-size: clamp(16px, 3vw, 20px);
-        margin: 10px 0;
-    }
-    
-    #question-image {
-        height: clamp(120px, 35vw, 200px);
-        width: clamp(120px, 35vw, 200px);
-    }
-    
     .answer-options {
         max-width: 100%;
         gap: 8px;
@@ -168,73 +76,17 @@ main {
         font-size: clamp(12px, 2.5vw, 14px);
     }
     
-    .score-card {
-        order: 2;
-        width: 90%;
-        max-width: 400px;
-        margin: 10px auto;
-        padding: 10px;
-        flex-direction: row;
-        align-items: center;
-        background: white;
-        border-radius: 6px;
-        border: 3px solid green;
-        height: 20px;
-        max-height: 20px;
-    }
-    
-    .score-card fieldset {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-evenly;
-        border: none;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        gap: 5px;
-    }
-    
-    .score-card legend {
-        display: none;
-    }
-    
     #score,
     #question-number {
         display: none !important;
     }
     
-    #timer,
-    #correct-answers,
-    #incorrect-answers {
-        display: flex;
-        flex: 1;
-        margin: 0;
-        padding: 0 4px;
-        border-radius: 3px;
-        background: white;
-        font-size: 10px;
-        font-weight: bold;
-        height: 16px;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        min-width: 0;
-        line-height: 1;
-        color: #333;
-    }
-    
-    .score-card p:not(#timer):not(#correct-answers):not(#incorrect-answers) {
+    .game-scorecard p:not(#timer):not(#correct-answers):not(#incorrect-answers) {
         display: none !important;
     }
 }
 
 @media (max-width: 500px) {
-    #question-image {
-        height: clamp(60px, 25vh, 180px);
-        width: clamp(60px, 25vh, 180px);
-    }
-    
     .answer-options {
         gap: 6px;
         max-width: 300px;
