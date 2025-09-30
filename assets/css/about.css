@@ -1,15 +1,39 @@
+#about-section {
+    flex: 1;
+    width: min(90vw, 800px);
+    margin: clamp(15px, 5vw, 50px) auto;
+    padding: clamp(20px, 5vw, 60px);
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: clamp(15px, 3vw, 25px);
+    text-align: center;
+    border: 3px solid green;
+}
+
 #about-section h2 {
-    font-size: 28px;
-    color: black;
-    justify-content: left;
-    margin: 20px;
-    padding: 10px;
+    font-size: clamp(28px, 6vw, 42px);
+    color: green;
+    margin-bottom: clamp(20px, 4vw, 30px);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: clamp(1px, 0.3vw, 2px);
+    border-bottom: clamp(3px, 0.5vw, 4px) solid green;
+    padding-bottom: clamp(10px, 2vw, 15px);
+    display: inline-block;
 }
 
 #about-section p {
-    font-size: 16px;
-    color: green;
-    justify-content: left;
-    margin: 20px;
-    padding: 10px;
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: black;
+    line-height: clamp(1.6, 0.2vw, 1.8);
+    margin: 0 auto;
+    padding: 0;
+    max-width: min(700px, 90%);
+    font-weight: 400;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    #about-section p {
+        text-align: center;
+    }
 }
