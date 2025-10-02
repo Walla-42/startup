@@ -8,6 +8,8 @@
 - [Domain Names](#domain-names)
 - [HTML](#html)
 - [CSS](#css)
+- [React Components](#react-components)
+- [React Router](#react-router)
 
 
 ## Introduction
@@ -748,4 +750,205 @@ npm install bootstrap
 | **Utilities – Colors**    | `bg-primary`, `bg-secondary`, `bg-success`, `bg-danger`, `bg-warning`, `bg-info`, `bg-light`, `bg-dark`, `text-primary`, `text-secondary`, etc. | Background and text color helpers. |
 | **Utilities – Flex**      | `d-flex`, `flex-row`, `flex-column`, `justify-content-start`, `justify-content-center`, `justify-content-between`, `align-items-start`, `align-items-center`, `align-items-end` | Flexbox helpers for alignment and layout. |
 | **Utilities – Sizing**    | `w-25`, `w-50`, `w-75`, `w-100`, `h-25`, `h-50`, `h-75`, `h-100` | Width and height helpers (percentage-based). |
+
+## React Components
+
+> [!NOTE]
+> React components allow you to modularize the functionality of your application, making code reusable and directly representing UI elements that users interact with.
+
+###  Key Concepts
+
+#### 1. **Rendering JSX**
+- **Purpose**: Components generate user interface through JSX
+- **Process**: JSX returned from a component gets inserted into the component HTML element
+- **Example**:
+  ```jsx
+  // JSX usage
+  <div>Component: <Demo /></div>
+  
+  // React component
+  function Demo() {
+    const who = 'world';
+    return <b>Hello {who}</b>;
+  }
+  
+  // Resulting HTML
+  <div>Component: <b>Hello world</b></div>
+  ```
+
+#### 2. **Styling Components**
+- **External CSS**: Import CSS files and reference rules in JSX
+- **Key Difference**: Use `className` instead of `class` (JavaScript keyword conflict)
+- **Example**:
+  ```jsx
+  import './index.css';
+  
+  function App() {
+    return (
+      <div>
+        <pre className='code'>console.log(1+1);</pre>
+      </div>
+    );
+  }
+  ```
+
+#### 3. **Child Components**
+- **Concept**: Components can reference other components in their JSX
+- **Benefit**: Build complex trees of interrelated components
+- **Structure**: Parent components contain child components (e.g., App → Header, Content, Footer)
+
+#### 4. **Properties (Props)**
+- **Purpose**: Pass information to components as element properties
+- **Usage**: Component receives properties in constructor/function parameters
+- **Example**:
+  ```jsx
+  // JSX with props
+  <Demo who="Walke" />
+  
+  // Component receiving props
+  function Demo(props) {
+    return <b>Hello {props.who}</b>;
+  }
+  ```
+
+#### 5. **State**
+- **Definition**: Internal component state managed with `React.useState` hook
+- **Returns**: Current state variable + function to update state
+- **Example**:
+  ```jsx
+  function App() {
+    const [clicked, updateClicked] = React.useState(false);
+    
+    function onClicked() {
+      updateClicked(!clicked);
+    }
+    
+    return <p onClick={onClicked}>clicked: {`${clicked}`}</p>;
+  }
+  ```
+
+#### 6. **Reactivity**
+- **Control**: How components react to user actions and application events
+- **Trigger**: When state or properties change, render functions are called
+- **Scope**: Component and all dependent components re-render
+
+###  Quick Reference
+
+| Concept | Key Points |
+|---------|------------|
+| **JSX Rendering** | Return JSX from components; gets inserted into HTML |
+| **Styling** | Import CSS files, use `className` not `class` |
+| **Child Components** | Components can contain other components |
+| **Props** | Pass data to components via element attributes |
+| **State** | Use `useState` hook for internal component state |
+| **Reactivity** | State/prop changes trigger component re-renders |
+
+###  Best Practices
+- **Modularization**: Break UI into reusable components
+- **Props vs State**: Use props for external data, state for internal data
+- **Naming**: Use PascalCase for component names
+- **Reactivity**: Let React handle re-rendering when state changes
+
+## React Router
+
+> [!IMPORTANT]
+> React Router provides essential functionality for single-page applications, allowing navigation between different views without reloading the page.
+
+###  Key Concepts
+
+#### 1. **Single Page Applications (SPA)**
+- **Multi-page vs SPA**: Traditional multi-page apps require separate HTML files and server requests
+- **SPA Advantage**: Browser loads one HTML page, JavaScript manipulates DOM for different views
+- **Benefits**: 
+  - Maintain state during navigation
+  - No need for server requests for new pages
+  - Shared components (headers, footers, navigation)
+
+#### 2. **Router Package**
+- **Package**: `react-router-dom` (simplified routing functionality)
+- **Installation**: `npm install react-router-dom`
+- **Core Package**: Built on `react-router` for core functionality
+
+#### 3. **Core Router Components**
+
+| Component | Purpose | Key Attributes |
+|-----------|---------|----------------|
+| `BrowserRouter` | Encapsulates entire application and controls routing | - |
+| `Routes` | Container for Route components | - |
+| `Route` | Defines path-to-component mapping | `path`, `element` |
+| `Link` / `NavLink` | Navigation elements that trigger route changes | `to` |
+
+#### 4. **Basic Implementation**
+```jsx
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <div className="app">
+        {/* Navigation */}
+        <nav>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/about">About</NavLink>
+        </nav>
+
+        {/* Route Definitions */}
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
+  );
+}
+```
+
+#### 5. **How Router Works**
+- **URL Integration**: Router plugs into browser's location API
+- **DOM Manipulation**: Changes displayed path without server requests  
+- **Component Matching**: Routes match `to` and `path` attributes to render appropriate components
+- **State Preservation**: Application state maintained during navigation
+
+###  Setup Process
+
+#### Step 1: Install Dependency
+```bash
+npm install react-router-dom
+```
+
+#### Step 2: Import Components
+```jsx
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
+```
+
+#### Step 3: Structure Application
+1. Wrap app in `<BrowserRouter>`
+2. Create navigation with `<NavLink>` components
+3. Define routes with `<Routes>` and `<Route>` components
+
+###  Quick Reference
+
+| Concept | Description | Example |
+|---------|-------------|---------|
+| **BrowserRouter** | Root component that enables routing | `<BrowserRouter><App /></BrowserRouter>` |
+| **Routes** | Container for all route definitions | `<Routes>...</Routes>` |
+| **Route** | Maps URL path to component | `<Route path="/home" element={<Home />} />` |
+| **NavLink** | Navigation link with active state | `<NavLink to="/about">About</NavLink>` |
+| **Path Matching** | Router matches URL to component | URL `/green` → `<Page color="green" />` |
+
+###  Best Practices
+- **Single BrowserRouter**: Only use one BrowserRouter per application
+- **Nested Routes**: Organize routes hierarchically for complex applications
+- **NavLink vs Link**: Use NavLink for navigation menus (provides active state)
+- **Exact Matching**: Use exact prop when needed to prevent partial matches
+- **Route Order**: Place more specific routes before general ones
+
+###  Key Benefits
+- **No Page Reloads**: Instant navigation between views
+- **State Persistence**: Application state maintained across routes
+- **URL Synchronization**: Browser URL reflects current application state
+- **Component Reusability**: Share common components across different routes
+
 
