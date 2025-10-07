@@ -2,16 +2,31 @@ import React from 'react';
 import './login_create_account.css'
 
 export function Login() { 
-    <main>
-        <div id="about-section">
-            <h2>
-                What is BioMatch
-            </h2>
-            <p>
-                BioMatch is a gamified quiz platform that transforms molecular biology into a fast-paced competition. 
-                Players race against the clock to identify amino acids, nucleotides, and sequences, with scores updated to a live leaderboard. 
-                It makes learning biology competitive and fun — perfect for students, educators, or biology enthusiasts looking to sharpen their knowledge through real-time challenges.
-            </p>
-        </div>
-    </main>
+    return (
+        <main>
+            <div className="left-column">
+                <div id="Introduction-message">
+                    <h1>Welcome to BioMatch</h1>
+                    <p>Your gateway to competitive molecular biology quizzes!</p>
+                </div>
+            </div>
+
+            <div className="right-column">
+                <div id="signup-section">
+                    <h2>Login</h2>
+                    <p>Don't have an account? <a href='create_account.html'>Create your account</a></p>
+                </div>
+                <div id="login-section">
+                    <form method="get" action="home">
+                        <fieldset>
+                            <input type="text" className="login-inputs" name="username" placeholder="username" required/><br/>
+                            <input type="password" className="login-inputs" name="password" placeholder="password" required/><br/>
+                            <button type="submit" className="login-button button">Login</button>
+                        </fieldset>
+                    </form>
+                </div>
+                
+            </div>
+        </main>
+    )
 }
