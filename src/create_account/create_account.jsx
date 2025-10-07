@@ -2,6 +2,7 @@ import React from 'react';
 import './login_create_account.css'
 
 export function CreateAccount() { 
+    return (
     <main>
         <div className="left-column">
             <div id="Introduction-message">
@@ -27,4 +28,5 @@ export function CreateAccount() {
             </div>
         </div>
     </main>
+    )
     }

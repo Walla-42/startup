@@ -2,6 +2,7 @@ import React from 'react';
 import './about.css'
 
 export function About() { 
+    return(
     <main>
         <div id="about-section">
             <h2>
@@ -14,4 +15,5 @@ export function About() {
             </p>
         </div>
     </main>
+    )
 }
