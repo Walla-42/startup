@@ -1,0 +1,68 @@
+#player-name {
+    color: green;
+    font-weight: bold;
+}
+
+.user-login-info {
+    margin: 10px;
+    align-items: left;
+    justify-content: left;
+    color: black;
+    display:flex;
+    font-size: 14px;
+    position: relative;
+}
+
+.GameButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.game-button {
+    display: flex;
+    margin: 10px;
+    font-size: clamp(18px, 4vw, 28px);
+    background-color: #000000d4;
+    color: green;
+    height: clamp(100px, 30vh, 400px);
+    width: clamp(100px, 30vw, 400px);
+    border-radius: 10px;
+}
+
+.nav-button {
+    margin: 10px;
+}
+
+
+#websocket-user {
+    color: rgb(2, 193, 11);
+}
+
+.live-updates {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    width: clamp(100px, 90vw, 600px);
+    height: clamp(50px, 30vh, 400px);
+    margin: auto 1rem 2rem 1rem;
+    margin-top: auto;
+    padding: 1rem;
+    border: 3px solid green;
+    background-color: #000000d4;
+    border-radius: 10px;
+    font-size: clamp(11px, 2vw, 16px);
+}
+
+#websocket-game {
+    color: yellow;
+}
+
+@media (max-width: 600px) {
+  .GameButtons {
+    flex-direction: row;
+  }
+}

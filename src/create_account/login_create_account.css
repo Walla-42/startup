@@ -1,0 +1,159 @@
+#Title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#Introduction-message h1{
+    color: green;
+    font-size: 100px;
+    font-weight: bold;
+}
+
+#Introduction-message {
+    color: white;
+    font-size: 30px;
+    justify-content: center;
+}
+
+#signup-section h2{
+    display: flex;
+    align-items: left;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+main {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-around;
+    font-family: arial;
+    flex: 1;
+    width: 100%; 
+    align-items: stretch;
+    justify-content: stretch;
+    position: relative;
+}
+
+.left-column {
+    background: #000000d4;
+    color: white;
+    flex: 1; 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    padding: 20px;
+    box-sizing: border-box; 
+    position:relative;
+}
+
+/* Testing to see if this works for a single line */
+.left-column::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        #333333 0%,
+        #333333 30%,
+        #04b032 40%,
+        #04b032 60%,
+        #333333 70%,
+        #333333 100%
+    );
+    background-size: 100% 200%; 
+    background-position: 0% 0%; 
+    animation: smoothBounce 2s ease-in-out infinite alternate;
+    z-index: 1;
+}
+
+@keyframes smoothBounce {
+    0% {
+        background-position: 0% 0%; 
+    }
+    100% {
+        background-position: 0% 100%; 
+    }
+}
+
+.right-column {
+    background-color: rgba(255, 255, 255, 0.916);
+    color: rgb(0, 0, 0);
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.login-inputs {
+    width: 450px; 
+    padding: 5px;    
+    border: 3px solid green;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.login-button {
+    color: rgb(255, 255, 255);
+    background-color: #098129;
+    font-weight: bold;
+    padding: 5px 20px;
+    align-items: center;
+    border-radius: 10px;
+    border: 3px solid green;
+    margin: 20px auto;
+    cursor: pointer;
+    display:block;
+}
+
+@media (max-width: 1000px) {
+    main {
+        flex-direction: column; 
+        width: 100vw; 
+        max-width: 100%; 
+        /* overflow-x: hidden;  */
+    }
+    
+    .left-column {
+        flex: 0 0 auto; 
+        min-height: 200px; 
+        width: 100%; 
+        padding: 15px; 
+    }
+    
+    .left-column::after {
+        visibility: hidden;
+    }
+    
+    .right-column {
+        flex: 1;
+        width: 100%; 
+        padding: 20px 15px;
+    }
+    
+    #Introduction-message h1 {
+        font-size: 48px; 
+        text-align: center;
+    }
+    
+    #Introduction-message {
+        font-size: 18px; 
+        text-align: center;
+    }
+    
+    #signup-section h2 {
+        font-size: 32px; 
+        justify-content: center;
+    }
+    
+    .login-inputs {
+        width: 90vw; 
+        max-width: 450px;
+        min-width: 200px;
+    }
+}

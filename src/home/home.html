@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BioMatch Home</title>
+        <!-- viewport scaling -->
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+        <!-- local css links -->
+        <link rel="stylesheet" href="../css/main.css" />
+        <link rel="stylesheet" href="../css/home.css" />
+
+        <!-- bootstrap CSS framework -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+            crossorigin="anonymous"
+        />
+    </head>
+    <body>
+        <header>
+            <div id="Title">
+                <a href="home.html"><img src="../images/StartupLogo.svg" alt="BioMatch Logo" width="150px" height="50px" id="Logo"></a>
+            </div>
+            <nav class="navigation-buttons">
+                <button onclick="window.location.href='index.html'" class="nav-button button">Logout</button>
+                <button onclick="window.location.href='leaderboard.html'" class="nav-button button">Leaderboards</button>
+                <button onclick="window.open('https://www.github.com/walla-42/startup', '_blank')" class="nav-button button">Github</button>
+            </nav>
+        </header>
+        <main>
+            <div class="user-login-info">
+                <p>Logged in as: <span id="player-name">current-user</span></p>
+            </div>
+            <div class="GameButtons">
+                <button onclick="window.location.href='genome_trivia.html'" class="game-button button">Genome Trivia</button>
+                <button onclick="window.location.href='name_that_molecule.html'" class="game-button button">Name That Molecule</button>
+            </div>
+
+            <!-- Place holder for server messages updated by websocket -->
+            <div class="live-updates">
+                <p><span id="websocket-user">Walla42</span> has achieved a new highscore in <span id="websocket-game">Name That Molecule</span>!</p>
+            </div>
+
+        </main>
+        <footer>
+            <span>Contributor(s): Logan Wallace</span>
+            <br />
+            <a href="about.html">about</a>
+            <a href="https://www.github.com/walla-42/startup" target="_blank">Github</a>
+        </footer>
+    </body>
+</html>

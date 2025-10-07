@@ -1,0 +1,32 @@
+{
+  "name": "biomatch-games",
+  "version": "1.0.0",
+  "description": "A competative matching and quiz game website where you can learn biology while competing against others. ",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/walla-42/startup.git"
+  },
+  "keywords": [
+    "genetics",
+    "biochemistry",
+    "molecular",
+    "biology",
+    "quiz",
+    "bioinformatics"
+  ],
+  "author": "Logan Wallace",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/walla-42/startup/issues"
+  },
+  "homepage": "https://github.com/walla-42/startup#readme",
+  "devDependencies": {
+    "vite": "^7.1.9"
+  }
+}

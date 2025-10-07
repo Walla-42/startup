@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- This is the main game for this project -->
+    <head>
+        <title>Genome Trivia</title>
+        <meta name="description" content="A molecule naming game where players identify as many molecules as possible within a time limit.">
+
+        <!-- viewport scaling -->
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+        <!-- local css links -->
+        <link rel="stylesheet" href="../css/main.css" />
+        <link rel="stylesheet" href="../css/name_that_molecule.css" />
+
+        <!-- bootstrap CSS framework -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+            crossorigin="anonymous"
+        />
+    </head>
+    <body>
+        <header>
+            <div id="Title">
+                <a href="home.html"><img src="../images/StartupLogo.svg" alt="BioMatch Logo" width="150px" height="50px" id="Logo"></a>
+            </div>
+            <nav class="navigation-buttons">
+                <button onclick="window.location.href='home.html'" class="nav-button button">Quit</button>
+            </nav>
+        </header>
+        <main class="game-layout">
+            <!-- This is a placeholder for the score card data which will be updated as the game is played. This data is stored in the database when the game ends. -->
+            <div class="game-scorecard">
+                <fieldset>
+                    <legend>Scorecard</legend>
+                    <p id="score">Score: 0</p>
+                    <p id="timer">Time Left: 30s</p>
+                    <p id="correct-answers">Correct: 0</p>
+                    <p id="incorrect-answers">Incorrect: 0</p>
+                </fieldset>
+            </div>
+
+            <div class="game-question">
+                <!-- This is a placeholder for the PubChem API which will call images based on randomly generated molecule names. -->
+                <img id="question-image" class="game-question-image" src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/tryptophan/PNG" alt="question-image">
+
+                
+                <h3 id="question-text" class="game-question-text">What molecule is this?</h2>
+                <!-- Molecule names will be stored in the database -->
+
+                <form class="game-form">
+                    <div id="answer-entry">
+                        <label for="answer">Answer: <input type="text" id="answer" name="answer" required><br/></label>
+                    </div>
+                    <button type="button" class="button">Submit</button>
+                </form>
+            </div>
+
+        </main>
+        <footer>
+            <span>Contributor(s): Logan Wallace</span>
+            <br />
+
+            <div class="footer-links">
+                <a href="about.html">about</a>
+                <a href="https://www.github.com/walla-42/startup" target="_blank">Github</a>
+            </div>
+        </footer>
+    </body>
+</html>
