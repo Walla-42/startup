@@ -3,8 +3,8 @@ import './genome_trivia.css'
 
 export function GenomeTrivia() { 
     return (
-        <main classsName="game-layout">
-            <div classsName="game-scorecard">
+        <main className="game-layout">
+            <div className="game-scorecard">
                 <fieldset>
                     <legend>Scorecard</legend>
                     <p id="score">Score: 0</p>
@@ -15,13 +15,13 @@ export function GenomeTrivia() {
                 </fieldset>
             </div>
 
-            <div classsName="game-question">
-                <img id="question-image" classsName="game-question-image" src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/tryptophan/PNG" alt="question-image"/>
+            <div className="game-question">
+                <img id="question-image" className="game-question-image" src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/tryptophan/PNG" alt="question-image"/>
 
-                <h3 id="question-text" classsName="game-question-text">how many carbons are present in Tryptophan?</h3>
+                <h3 id="question-text" className="game-question-text">how many carbons are present in Tryptophan?</h3>
 
-                <form id="quiz-form" classsName="game-form">
-                    <div classsName="answer-options">
+                <form id="quiz-form" className="game-form">
+                    <div className="answer-options">
                         <label for="optionA"><input type="radio" id="optionA" name="varRadio" value="A"/><span>A. </span>23</label>
                 
                         <label for="optionB"><input type="radio" id="optionB" name="varRadio" value="B" /><span>B. </span>8</label><br/>
@@ -30,7 +30,7 @@ export function GenomeTrivia() {
                         
                         <label for="optionD"><input type="radio" id="optionD" name="varRadio" value="D" /><span>D. </span>12</label><br/>
                     </div>
-                    <button type="button" classsName="button">Submit</button>
+                    <button type="button" className="button">Submit</button>
                 </form>
             </div>
         </main>

@@ -14,7 +14,7 @@ export function Login() {
             <div className="right-column">
                 <div id="signup-section">
                     <h2>Login</h2>
-                    <p>Don't have an account? <a href='create_account.html'>Create your account</a></p>
+                    <p>Don't have an account? <a href='create_account'>Create your account</a></p>
                 </div>
                 <div id="login-section">
                     <form method="get" action="home">

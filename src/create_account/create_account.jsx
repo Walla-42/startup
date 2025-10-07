@@ -14,10 +14,10 @@ export function CreateAccount() {
         <div className="right-column">
             <div id="signup-section">
                 <h2>Create Account</h2>
-                <p>Already have an account? <a href='index.html'>Login here</a></p>
+                <p>Already have an account? <a href='/'>Login here</a></p>
             </div>
             <div id="login-section">
-                <form method="get" action="index.html">
+                <form method="get" action="home">
                     <fieldset>
                         <input type="text" className="login-inputs" name="username" placeholder="username" required/><br/>
                         <input type="text" className="login-inputs" name="email" placeholder="email" required/><br/>
