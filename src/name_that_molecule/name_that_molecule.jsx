@@ -1,5 +1,5 @@
 import React from 'react';
-import './about.css'
+import './name_that_molecule.css'
 
 export function NameThatMolecule() { 
     <main>

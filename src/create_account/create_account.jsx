@@ -1,7 +1,7 @@
 import React from 'react';
-import './about.css'
+import './login_create_account.css'
 
-export function Create_account() { 
+export function CreateAccount() { 
     <main>
         <div className="left-column">
             <div id="Introduction-message">

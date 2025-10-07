@@ -1,7 +1,7 @@
 import React from 'react';
-import './about.css'
+import './genome_trivia.css'
 
-export function About() { 
+export function GenomeTrivia() { 
     <main>
         <div id="about-section">
             <h2>

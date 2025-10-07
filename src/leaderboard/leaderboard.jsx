@@ -1,7 +1,7 @@
 import React from 'react';
-import './about.css'
+import './leaderboard.css'
 
-export function About() { 
+export function Leaderboard() { 
     <main>
         <div id="about-section">
             <h2>

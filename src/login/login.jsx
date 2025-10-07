@@ -1,7 +1,7 @@
 import React from 'react';
-import './about.css'
+import './login_create_account.css'
 
-export function About() { 
+export function Login() { 
     <main>
         <div id="about-section">
             <h2>
