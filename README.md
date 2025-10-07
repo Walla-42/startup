@@ -24,21 +24,13 @@ BioMatch is a gamified quiz platform that transforms molecular biology into a fa
 
 ### Design
 
-![login-user-page](assets/images/LoginPage.png)
-![create-user-page](assets/images/AccountCreationPage.png)
-![home-page](assets/images/HomePage.png)
-![genome-trivia-page](assets/images/GenomeTriviaPage.png)
-![name-that-molecule](assets/images/NameThatMoleculePage.png)
-![live-leaderboard-page](assets/images/LeaderboardPage.png)
+![login-user-page](/images/LoginPage.png)
+![create-user-page](/images/AccountCreationPage.png)
+![home-page](/images/HomePage.png)
+![genome-trivia-page](/images/GenomeTriviaPage.png)
+![name-that-molecule](/images/NameThatMoleculePage.png)
+![live-leaderboard-page](/images/LeaderboardPage.png)
 
-
-
-<!-- ```mermaid
-sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
-``` -->
 
 ### Key features
 
