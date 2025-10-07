@@ -1,7 +1,7 @@
 import React from 'react';
 import './about.css'
 
-export function About() { 
+export function NameThatMolecule() { 
     <main>
         <div id="about-section">
             <h2>
