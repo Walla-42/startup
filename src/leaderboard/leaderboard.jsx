@@ -2,16 +2,59 @@ import React from 'react';
 import './leaderboard.css'
 
 export function Leaderboard() { 
-    <main>
-        <div id="about-section">
-            <h2>
-                What is BioMatch
-            </h2>
-            <p>
-                BioMatch is a gamified quiz platform that transforms molecular biology into a fast-paced competition. 
-                Players race against the clock to identify amino acids, nucleotides, and sequences, with scores updated to a live leaderboard. 
-                It makes learning biology competitive and fun — perfect for students, educators, or biology enthusiasts looking to sharpen their knowledge through real-time challenges.
-            </p>
-        </div>
-    </main>
+    return (
+         <main>
+            <div className="leaderboard">
+                <h1>Leaderboards</h1>
+                <table>
+                    <thead>
+                        <tr className="leaderboard-header">
+                            <th>#</th>
+                            <th>Game</th>
+                            <th>Username</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="leaderboard-row">
+                            <td>1</td>
+                            <td>Genome Trivia</td>
+                            <td>walla42</td>
+                            <td>10600</td>
+                        </tr>
+                        <tr className="leaderboard-row">
+                            <td>2</td>
+                            <td>Name that Molecule</td>
+                            <td>jellybelly</td>
+                            <td>12000</td>
+                        </tr>
+                        <tr className="leaderboard-row">
+                            <td>3</td>
+                            <td>Name that Molecule</td>
+                            <td>Jaron</td>
+                            <td>8000</td>
+                        </tr>
+                        <tr className="leaderboard-row">
+                            <td>4</td>
+                            <td>Genome Trivia</td>
+                            <td>walla43</td>
+                            <td>5000</td>
+                        </tr>
+                        <tr className="leaderboard-row">
+                            <td>5</td>
+                            <td>Genome Trivia</td>
+                            <td>Jaimie</td>
+                            <td>1600</td>
+                        </tr>
+                        <tr className="leaderboard-row">
+                            <td>6</td>
+                            <td>Genome Trivia</td>
+                            <td>Jecelle</td>
+                            <td>600</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    )
 }
