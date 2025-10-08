@@ -17,7 +17,7 @@ export function CreateAccount() {
                 <p>Already have an account? <a href='/'>Login here</a></p>
             </div>
             <div id="login-section">
-                <form method="get" action="home">
+                <form method="get" action="/">
                     <fieldset>
                         <input type="text" className="login-inputs" name="username" placeholder="username" required/><br/>
                         <input type="text" className="login-inputs" name="email" placeholder="email" required/><br/>
