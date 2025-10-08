@@ -289,3 +289,8 @@ a {
   }
 }
 
+/* Remove underlines only from game buttons */
+.GameButtons a {
+  text-decoration: none !important;
+}
+
