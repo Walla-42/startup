@@ -93,9 +93,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - I did not complete this part of the deliverable.
+- [x] **Bundled using Vite** - setup dependancies and scripts so that the server can be run with npm run [script-command]
+- [x] **Components** - transfered each page html main to separate react components that can be called into the app.jsx and rendered in the index.html. 
+- [x] **Router** - Added router to route users to the correct pages within the website as well as a not found page if an unrecoginized address is given.
 
 ## 🚀 React part 2: Reactivity deliverable
 

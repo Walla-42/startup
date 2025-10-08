@@ -1,5 +1,6 @@
+/*main section styling*/
 .home-main {
-    display: flex; /* ensure this is a flex container in case global main differs */
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
@@ -34,6 +35,7 @@
     flex-wrap: wrap;
     align-self: center;
     margin-top: 10px;
+    text-decoration: none;
 }
 
 .game-button {

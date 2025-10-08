@@ -18,7 +18,7 @@ export default function App() {
             <div className='body bg-dark text-light'>
                 <header>
                     <div id="Title">
-                        <NavLink to="home"><img src="../public/StartupLogo.svg" alt="BioMatch Logo" width="150px" height="50px" id="Logo"/></NavLink>
+                        <NavLink to="home"><img src="/StartupLogo.svg" alt="BioMatch Logo" width="150px" height="50px" id="Logo"/></NavLink>
                     </div>
                     <nav className="navigation-buttons">
                         <NavLink to="home"><button className="nav-button button">Home</button></NavLink>
@@ -43,7 +43,6 @@ export default function App() {
                     <span>Contributor(s): Logan Wallace</span>
                     <br />
                     <NavLink to="about">about</NavLink>
-                    <NavLink to="https://www.github.com/walla-42/startup" target="_blank">Github</NavLink>
                 </footer>
             </div>
         </BrowserRouter>
