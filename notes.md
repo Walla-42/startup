@@ -11,6 +11,7 @@
 - [React Components](#react-components)
 - [React Router](#react-router)
 - [Vite](#vite)
+- [JavaScript](#javascript)
 
 
 ## Introduction
@@ -1088,3 +1089,367 @@ npm run build  # Create production bundle
 - **Production Ready**: Optimized builds with minification and bundling
 - **Framework Agnostic**: Works with React, Vue, vanilla JS, and more
 
+### Reactivity
+
+## JavaScript 
+- [Functions](#functions)
+- [Arrays](#arrays)
+- [Objects and Classes](#objects-and-clases)
+- [Document Object Model](#document-object-model-(dom))
+
+### Functions
+JavaScript functions are first class object meaning they can be assigned a name, passed as a parameter, returned as a result or referenced from an object or array like a variable. 
+
+**defining a function**
+```javascript
+  function hello(who) {
+    return 'hello ' + who;
+  }
+
+  console.log(hello('world'));
+  //output: hello world
+```
+
+Funcitons are defined by the function keyword similar to def in python
+
+**function parameters**
+you can assign a default value to a parameter similar to python by providing the var followed by '=' then the default value.
+
+```javascript
+  function labeler(value, title = 'title') {
+    console.log('${titlte}=${value}');
+  }
+
+  labeler();
+  //output : title=undefined
+
+  lableer('fish');
+  //output : title=fish
+
+  labeler('fish', 'animal');
+  //output: animal = fish
+```
+
+**anonymous functions**
+An anonymous function is a function that doesnt have a name. This is common if you are assigning a function to a variable to be passed into another function.
+
+```javascript
+  function doMath(operation, a, b) {
+    return operation(a,b);
+  }
+
+  const add = function (a,b) {
+    return a + b;
+  }
+
+  console.log(doMath(add, 5,3));
+  //output 8
+
+  // you can also pass the function as the parameter without assigning to a variable
+
+  console.log(doMath( function (a,b) {
+    return a + b
+  }, 5, 3));
+
+  //output 8
+```
+
+You can also perform an anonymous function using the arrow syntax like such
+```javascript
+  console.log(doMath((a,b) => a - b, 5, 3));
+  //output 2
+```
+
+syntax for this is `parameters` => `function body`
+
+
+
+### Arrays
+**building arrays**
+Arrays in Javascipt are similar to arrays in Java in how you build them
+```javascript
+const a = [1,2,3];
+console.log(a[1]);
+//output 2
+
+consle.log(a.length);
+// Output 3
+```
+
+**Array Functions**
+| Function | Meaning                                                   | Example                       |
+| -------- | --------------------------------------------------------- | ----------------------------- |
+| push     | Add an item to the end of the array                       | `a.push(4)`                   |
+| pop      | Remove an item from the end of the array                  | `x = a.pop()`                 |
+| slice    | Return a sub-array                                        | `a.slice(1,-1)`               |
+| sort     | Run a function to sort an array in place                  | `a.sort((a,b) => b-a)`        |
+| values   | Creates an iterator for use with a `for of` loop          | `for (i of a.values()) {...}` |
+| find     | Find the first item satisfied by a test function          | `a.find(i => i < 2)`          |
+| forEach  | Run a function on each array item                         | `a.forEach(console.log)`      |
+| reduce   | Run a function to reduce each array item to a single item | `a.reduce((a, c) => a + c)`   |
+| map      | Run a function to map an array to a new array             | `a.map(i => i+i)`             |
+| filter   | Run a function to remove items                            | `a.filter(i => i%2)`          |
+| every    | Run a function to test if all items match                 | `a.every(i => i < 3)`         |
+| some     | Run a function to test if any items match                 | `a.some(i => i < 1)`          |
+
+### Objects and Classes
+
+objects can be created using the new operator similar to java. 
+```javascript
+  const obj = new Object({ a: 3 });
+  obj['b'] = 'fish;'
+  obj.c = [1, 2, 3];
+  obj.hello = function () {
+    console.log('hello');
+  };
+
+  console.log(obj);
+  // output {a:3, b: 'fish', c: [1,2,3], hello: func}
+
+```
+
+**Object Literals**
+> [!NOTE] I need to understand this better
+
+**object functions**
+object has several static functions asociated with it. including
+
+| Function | Meaning                             |
+| -------- | ----------------------------------- |
+| entries  | Returns an array of key value pairs |
+| keys     | Returns an array of keys            |
+| values   | Returns an array of values          |
+
+```javascript
+const obj = {
+  a: 3,
+  b: 'fish',
+};
+
+console.log(Object.entries(obj));
+// OUTPUT: [['a', 3], ['b', 'fish']]
+console.log(Object.keys(obj));
+// OUTPUT: ['a', 'b']
+console.log(Object.values(obj));
+// OUTPUT: [3, 'fish']
+```
+
+**Constructors**
+
+Any object that returns an object is considered a constructor and can be invoked with the new operator
+```javascript
+  function Person(name) {
+    return {
+      name: name,
+    };
+  }
+
+  const p = new Person('Eich');
+  console.log(p)
+  //output {name: 'Eich'}
+```
+
+Because objects can have any type of poperty value you can create methods on the object as part of its encapsulation.
+```javascript
+ function Person(name) {
+  return {
+    name: name, 
+    log: function () {
+      console.log('My name is ' + this.name);
+    },
+  };
+ }
+
+ const p = new person('Eich');
+ p.log();
+ //output: my nam eis Eich
+```
+
+**Classes**
+
+You can use classes to define objects. Using a class clarifies the intent to create a reusable component rather than a one-off object. Class declarations look similar to declaring an object, but classes have an explicit constructor and assumed function declarations. The person object from above would look like the following when converted to a class.
+
+```js
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+
+  log() {
+    console.log('My name is ' + this.name);
+  }
+}
+
+const p = new Person('Eich');
+p.log();
+// OUTPUT: My name is Eich
+```
+
+You can make properties and functions of classes private by prefixing them with a `#`.
+
+```js
+class Person {
+  #name;
+
+  constructor(name) {
+    this.#name = name;
+  }
+}
+
+const p = new Person('Eich');
+p.#name = 'Lie';
+// OUTPUT: Uncaught SyntaxError: Private field '#name' must be declared in an enclosing class
+```
+
+**Inheritance**
+
+Classes can be extended by using the `extends` keyword to define inheritance. Parameters that need to be passed to the parent class are delivered using the `super` function. Any functions defined on the child that have the same name as the parent override the parent's implementation. A parent's function can be explicitly accessed using the `super` keyword.
+
+```js
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+
+  print() {
+    return 'My name is ' + this.name;
+  }
+}
+
+class Employee extends Person {
+  constructor(name, position) {
+    super(name);
+    this.position = position;
+  }
+
+  print() {
+    return super.print() + '. I am a ' + this.position;
+  }
+}
+
+const e = new Employee('Eich', 'programmer');
+console.log(e.print());
+// OUTPUT: My name is Eich. I am a programmer
+```
+
+### Document Object Model (DOM)
+
+The Document Object Model (DOM) is an object representation of the HTML elements that the browser uses to render the display. The browser also exposes the DOM to external code so that you can write programs that dynamically manipulate the HTML.
+
+The browser provides access to the DOM through a global variable name `document` that points to the root element of the DOM. If you open the browser's debugger console window and type the variable name `document` you will see the DOM for the document the browser is currently rendering.
+
+```html
+> document
+
+<html lang="en">
+  <body>
+    <p>text1 <span>text2</span></p>
+    <p>text3</p>
+  </body>
+</html>
+```
+
+```css
+p {
+  color: red;
+}
+```
+
+For everything in an HTML document there is a node in the DOM. This includes elements, attributes, text, comments, and whitespace. All of these nodes form a big tree, with the document node at the top.
+
+![dom](dom.jpg)
+
+**Accessing the DOM**
+
+Every element in an HTML document implements the DOM Element interface, which is derived from the DOM Node interface. The [DOM Element Interface](https://developer.mozilla.org/en-US/docs/Web/API/Element) provides the means for iterating child elements, accessing the parent element, and manipulating the element's attributes. From your JavaScript code, you can start with the `document` variable and walk through every element in the tree.
+
+```js
+function displayElement(el) {
+  console.log(el.tagName);
+  for (const child of el.children) {
+    displayElement(child);
+  }
+}
+
+displayElement(document);
+```
+
+You can provide a CSS selector to the `querySelectorAll` function in order to select elements from the document. The `textContent` property contains all of the element's text. You can even access a textual representation of an element's HTML content with the `innerHTML` property.
+
+```js
+const listElements = document.querySelectorAll('p');
+for (const el of listElements) {
+  console.log(el.textContent);
+}
+```
+
+**Modifying the DOM**
+
+The DOM supports the ability to insert, modify, or delete the elements in the DOM. To create a new element you first create the element on the DOM document. You then insert the new element into the DOM tree by appending it to an existing element in the tree.
+
+```js
+function insertChild(parentSelector, text) {
+  const newChild = document.createElement('div');
+  newChild.textContent = text;
+
+  const parentElement = document.querySelector(parentSelector);
+  parentElement.appendChild(newChild);
+}
+
+insertChild('#courses', 'new course');
+```
+
+To delete elements call the `removeChild` function on the parent element.
+
+```js
+function deleteElement(elementSelector) {
+  const el = document.querySelector(elementSelector);
+  el.parentElement.removeChild(el);
+}
+
+deleteElement('#courses div');
+```
+
+**Injecting HTML**
+
+The DOM also allows you to inject entire blocks of HTML into an element. The following code finds the first `div` element in the DOM and replaces all the HTML it contains.
+
+```js
+const el = document.querySelector('div');
+el.innerHTML = '<div class="injected"><b>Hello</b>!</div>';
+```
+
+However, directly injecting HTML as a block of text is a common attack vector for hackers. If an untrusted party can inject JavaScript anywhere in your application then that JavaScript can represent itself as the current user of the application. The attacker can then make requests for sensitive data, monitor activity, and steal credentials. The example below shows how the img element can be used to launch an attack as soon as the page is loaded.
+
+```html
+<img src="bogus.png" onerror="console.log('All your base are belong to us')" />
+```
+
+If you are injecting HTML, make sure that it cannot be manipulated by a user. Common injection paths include HTML input controls, URL parameters, and HTTP headers. Either sanitize any HTML that contains variables, or simply use DOM manipulation functions instead of using `innerHTML`.
+
+**Event Listeners**
+
+All DOM elements support the ability to attach a function that gets called when an event occurs on the element. These functions are called [event listeners](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener). Here is an example of an event listener that gets called when an element gets clicked.
+
+```js
+const submitDataEl = document.querySelector('#submitData');
+submitDataEl.addEventListener('click', function (event) {
+  console.log(event.type);
+});
+```
+
+There are lots of possible events that you can add a listener to. This includes things like mouse, keyboard, scrolling, animation, video, audio, WebSocket, and clipboard events. You can see the full list on [MDN](https://developer.mozilla.org/en-US/docs/Web/Events). Here are a few of the more commonly used events.
+
+| Event Category | Description           |
+| -------------- | --------------------- |
+| Clipboard      | Cut, copied, pasted   |
+| Focus          | An element gets focus |
+| Keyboard       | Keys are pressed      |
+| Mouse          | Click events          |
+| Text selection | When text is selected |
+
+You can also add event listeners directly in the HTML. For example, here is a `onclick` handler that is attached to a button.
+
+```html
+<button onclick='alert("clicked")'>click me</button>
+```
