@@ -1571,6 +1571,8 @@ try {
   console.log('Thanks for playing!');
 }
 ```
+
+
 **async:** a method that turns any function into an asynchronous function.
 
 await has its limitations in that you cannot run it outside of the top level JavaScript or without being in a function defined with the async keyword.
@@ -1602,4 +1604,76 @@ console.log(cow());
 // OUTPUT: Promise {<pending>}
 // this is because the console logs the inital Promise status before the event loop processes the microtask queue.
 
+// to see the completed result we can use the await expression
+console.log(await cow());
+// OUTPUT: moo
+
 ```
+
+**Why might this be useful?**
+Lets say you need to make an API call and you want to use the output as you would when making an API call. You would need to wait for the return and then wait for the return to be converted to json like this:
+
+```js
+
+//before
+const httpPromise = fetch('https://simon.cs260.click/api/user/me');
+const jsonPromise = httpPromise.then((r) => r.json());
+jsonPromise.then((j) => console.log(j));
+console.log('done');
+
+// OUTPUT: done
+// OUTPUT: {email: 'bud@mail.com', authenticated: true}
+
+//after
+const httpResponse = await fetch('https://simon.cs260.click/api/user/me');
+const jsonResponse = await httpResponse.json();
+console.log(jsonResponse);
+console.log('done');
+
+// OUTPUT: {email: 'bud@mail.com', authenticated: true}
+// OUTPUT: done
+```
+
+
+## WebServices
+
+### Fetch
+**Basic Usage:** Take a URL and returns a promise. The promise .then function takes a callback function that is asynchronously called whe the requested URL content is obtained. You can then use the json function on the response to conver it to a JavaScript object. 
+
+ex. 
+```js
+
+// if the request method is unspecified it defaults to GET
+fetch('https://quote.cs260.click')
+  .then((response) => response.json())
+  .then((jsonResponse) => {
+    console.log(jsonResponse);
+  });
+
+
+// response object json
+{
+  author: 'Kyle Simpson',
+  quote: "There's nothing more permanent than a temporary hack."
+}
+
+
+// do a post request
+fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST',
+  body: JSON.stringify({
+    title: 'test title',
+    body: 'test body',
+    userId: 1,
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then((response) => response.json())
+  .then((jsonResponse) => {
+    console.log(jsonResponse);
+  });
+```
+
+
