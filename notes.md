@@ -1091,11 +1091,12 @@ npm run build  # Create production bundle
 
 ### Reactivity
 
+
 ## JavaScript 
 - [Functions](#functions)
 - [Arrays](#arrays)
 - [Objects and Classes](#objects-and-clases)
-- [Document Object Model](#document-object-model-(dom))
+- [Document Object Model](#document-object-model)
 
 ### Functions
 JavaScript functions are first class object meaning they can be assigned a name, passed as a parameter, returned as a result or referenced from an object or array like a variable. 
@@ -1332,7 +1333,7 @@ console.log(e.print());
 // OUTPUT: My name is Eich. I am a programmer
 ```
 
-### Document Object Model (DOM)
+### Document Object Model
 
 The Document Object Model (DOM) is an object representation of the HTML elements that the browser uses to render the display. The browser also exposes the DOM to external code so that you can write programs that dynamically manipulate the HTML.
 
@@ -1357,7 +1358,7 @@ p {
 
 For everything in an HTML document there is a node in the DOM. This includes elements, attributes, text, comments, and whitespace. All of these nodes form a big tree, with the document node at the top.
 
-![dom](dom.jpg)
+![dom](https://github.com/webprogramming260/.github/blob/main/profile/javascript/dom/dom.jpg)
 
 **Accessing the DOM**
 
@@ -1452,4 +1453,153 @@ You can also add event listeners directly in the HTML. For example, here is a `o
 
 ```html
 <button onclick='alert("clicked")'>click me</button>
+```
+
+
+### Javascript Promises
+
+Promises are a way overcome the problem of single thread execution. Because HTML executes on a single thread, you cannot take a long time to process javascript on the main rendering thred. 
+
+Promises allow you to execute a block of code asynchronously such that it runs in the backgroud while the main rendering thread continues to execute. 
+
+Promise execution is always in one of the three states:
+1. pending - currnetly running asynchronously
+2. fulfilled - Completed Successfully
+3. rejected - Failed to complete
+
+```js
+// A variable delay that acts as a function
+const delay = (msg, wait) => {
+  setTimeout(() => {
+    console.log(msg, wait);
+  }, 1000 * wait);
+};
+
+// create a new promis object that runs in the background. It starts first
+new Promise((resolve, reject) => {
+  // Code executing in the promise
+  for (let i = 0; i < 3; i++) {
+    delay('In promise', i);
+  }
+});
+
+// create a running action in the main thread that starts after the promise is initiated. 
+for (let i = 0; i < 3; i++) {
+  delay('After promise', i);
+}
+
+```
+
+Promise has 2 parameters - resolve, and reject. These communicate when a promise action has been completed, or failed to complete. 
+1. resolve - sets promise to complete state
+2. reject - sets promise to incomplete/rejected state
+
+```js
+
+
+let isCoinTossComplete = false;
+
+// background thread
+const coinToss = new Promise((resolve, reject) => {
+        setTimeout(() => {
+        if (Math.random() > 0.2) {
+        resolve(Math.random() > 0.5 ? 'Heads' : 'Tails');
+        } else {
+        reject('Coin fell off table! :( ');
+        }
+        isCoinTossComplete=true;
+    }, 2000);
+});
+
+// .then, .catch, .finally
+coinToss
+    .then((result) => console.log(`Coin toss result:  ${result}`))
+    .catch((error) => console.log(`Coin toss failed:  ${error}`))
+    .finally(() => console.log('Thanks for playing!'));
+
+// main thread
+const intervalID = setInterval(() => {
+    console.log(coinToss);
+    if (isCoinTossComplete) {
+        clearInterval(intervalID);;
+    }
+}, 1000);
+```
+
+**Then, Catch, Finally**
+After we set the state of the promise, we need to do something with the result. We have 3 options:
+1. .then
+2. .catch
+3. .finally
+
+**.then:** The .then function is called if the promise is fullfilled
+**.catch:** The .catch function is called if the promise runs unfullfiled and is rejected
+**.finally:** The .finally function is always called after all the processing is completed. 
+
+See example above for usage.
+
+### JavaScript Async/await
+**await:** This expression will block until the promise state moves to fullfilled or rejected. 
+
+ex:
+```js
+const coinToss = () => {
+  return new Promise((resolve reject) => {
+    setTimeout(() => {
+      if (Math.random() > 0.1) {
+        resolve(Math.random() > 0.5 ? 'Heads' : 'Tails');
+      } else {
+        resolve('fell of the table!');
+      }
+    }, 1000);
+  });
+};
+
+// utilizing the familiar then/catch chain to execure the promise
+coinToss()
+  .then((result) => console.log(`Toss Result: ${result}`));
+  .catch((error) => console.log(`Error: ${error}`));
+  .finally(() => console.log('Thanks for playing!'));
+
+// utilizing the await expression to execute the promise
+try {
+  const result = await coinToss();
+  console.log(`Toss Result: ${result}`);
+} catch (error) {
+  console.log(`Error: ${error}`);
+} finally {
+  console.log('Thanks for playing!');
+}
+```
+**async:** a method that turns any function into an asynchronous function.
+
+await has its limitations in that you cannot run it outside of the top level JavaScript or without being in a function defined with the async keyword.
+
+ex.:
+```js
+function cow() {
+  return 'moo';
+}
+console.log(cow());
+// returns 'moo'
+
+
+// same function defined with async
+async function cow() {
+  return 'moo'
+}
+console.log(cow());
+// returns Promise {<fulfilled>: 'moo'}
+
+
+// explicitly utilizing the promise instead of the async autognerated promise:
+async function cow() {
+  return new Promise((resolve) => {
+    resolve('moo');
+  });
+}
+console.log(cow());
+// OUTPUT: Promise {<pending>}
+// this is because the console logs the inital Promise status before the event loop processes the microtask queue.
+
 ```
