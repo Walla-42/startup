@@ -1092,14 +1092,110 @@ npm run build  # Create production bundle
 ### Reactivity
 
 
-## JavaScript 
+## JavaScript Basics
 - [Functions](#functions)
 - [Arrays](#arrays)
 - [Objects and Classes](#objects-and-clases)
 - [Document Object Model](#document-object-model)
 
+### Helpful methods:
+for arrays you can use the `.forEach` method which calls callback for each element in the array in order. Callback will recieve (element, index, array)
+```js
+const my_array = ['elem1', 'elem2', 'elem3'];
+my_array.forEach((word) => console.log(word));
+//output: elem1\n elem2\n elem3\n
+
+/** The word is the function parameter, the => is the anonymous arrow function similar to lambda functions */
+```
+**while loops**
+```js
+function countdown() {
+  let i = 0;
+  while (i++ < 5) {
+    console.log(`counting ... ${i}`);
+  }
+}
+
+countdown();
+```
+
+There are a couple new things in this javascript including the use of `$` for the template literal in the string output. This is similar to the f-strings in python. When you want
+to use a variable in the middle of an output stream, you have to use `${'variable'}`
+What is `let`? let is an object declaration that declares a mutable object with scope only available within the current code block `{}`. You cannot reference the object created by let before it is declared. `let` is used when you need to reassign
+the value after it is initalized. `let` is also mutable like `const`.
+ex:
+```js
+// block scope
+if (true) {
+  let x = 1;
+  console.log(x); // 1
+}
+console.log(typeof x); // "undefined"
+
+// reassignment allowed
+let count = 0;
+count = 1; // ok
+
+// cannot redeclare in same scope
+let a = 1;
+// let a = 2; // SyntaxError
+
+// Temporal Dead Zone
+// console.log(b); // ReferenceError
+let b = 3;
+```
+
+other object declarations are `var` and `const`. `var` is used to create an object that is function-scoped. It is initialized to undf so it can be called before it is declared. Unlike let, var objects can be redeclared. var use should be avoided in modern
+javascript. `const` is block-scoped similar to  `let` and cannot be used before it is declared. When you declare a `const` you must initalize it. Unlike `var` reassignment is not allowed. Although the `const` object name is contant, the object itself can 
+be mutated, just not rebound. 
+ex:
+```js
+// var
+function demoVar() {
+  console.log(a); // undefined (hoisted)
+  var a = 1;
+}
+
+// let / const
+console.log(b); // ReferenceError (TDZ)
+let b = 2;
+
+const obj = { name: 'A' };
+obj.name = 'B'; // allowed (mutates object)
+obj = {}; // TypeError (cannot reassign const binding)
+```
+
+
 ### Functions
 JavaScript functions are first class object meaning they can be assigned a name, passed as a parameter, returned as a result or referenced from an object or array like a variable. 
+
+
+**Linking a Javascript File**
+To link a javascript file you must do the following:
+1. insert a script element in the HTML body like this:
+```html
+<body>
+  <head>
+    <!-- Put your head item here-->
+     <script src="index.js"></script>
+  </head>
+  <main>
+    <!-- Main body elements go here-->
+    <script>
+      /*Put your javascript here */
+      function sayGoodbye() {
+        alert('Goodbye');
+      }
+
+    </script>
+    <!--You can also declare some js using event script attributes-->
+    <button onclick="let i=1;i++;console.log(i)">press me</button>
+  </main>
+  <footer>
+    <!--Footer elements go here-->
+  </footer>
+</body>
+```
 
 **defining a function**
 ```javascript
