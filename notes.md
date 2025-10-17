@@ -758,6 +758,13 @@ npm install bootstrap
 > [!NOTE]
 > React components allow you to modularize the functionality of your application, making code reusable and directly representing UI elements that users interact with.
 
+**Advantages**
+> Simplifies common patterns
+> Provides common components
+> Imporves performance
+> Increase device coverage
+
+
 ###  Key Concepts
 
 #### 1. **Rendering JSX**
@@ -953,6 +960,40 @@ import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 - **URL Synchronization**: Browser URL reflects current application state
 - **Component Reusability**: Share common components across different routes
 
+## Reactivity:
+In React, there are different types of variables. You can have a plain variable - 
+```js
+function App() {
+  let count = 10;
+
+  function update(newCount) {
+    count = newCount;
+    console.log(count);
+  }
+
+  return <div onClick={() => update(count + 1)}>Count: {count}</div>;
+}
+```
+The `count` variable wont update on click because it is not a react state variable. The update function runs and updates the count variable but the count variable wont update until the page is refreshed. i.e. react doesnt know anything has changed.
+
+**How do you set a react state variable?**
+you can set a react state variable along with its update function by using the `useState()` keyword.
+```js
+import { useState } from 'react';
+
+function App() {
+  const [count, setCount] = useState(10);
+
+  function update(newCount){
+    setCount(newCoun);
+    console.log(newCount);
+  }
+
+  return <div onClick={() => update(count + 1)}>Count: {count}</div>
+}
+```
+Now that count is a state variable, setCount will trigger a re-render so that the value is updated on the screen when changed. 
+
 ## Vite
 
 > [!TIP]
@@ -1088,8 +1129,6 @@ npm run build  # Create production bundle
 - **Great DX**: Excellent debugging support and error messages
 - **Production Ready**: Optimized builds with minification and bundling
 - **Framework Agnostic**: Works with React, Vue, vanilla JS, and more
-
-### Reactivity
 
 
 ## JavaScript Basics
@@ -1428,6 +1467,233 @@ const e = new Employee('Eich', 'programmer');
 console.log(e.print());
 // OUTPUT: My name is Eich. I am a programmer
 ```
+
+### setTimeout and setInterval
+`setTimeout` sets a delay to perform an action after a set time interval
+```js
+setTimeout(() => console.log('time is up'), 2000);
+console.log('timout will happen later')
+// Here the 'timeout will happen later' statement will print before the setTimeout statment because of the timeout is set for 2 seconds
+```
+
+`setInterval` sets how often something is performed. When you set an interval, you tell the consol to do something, then delay then perform it again.
+```js
+setInterval(() => console.log('do something'), 1000)
+// will print 'do something' every 1 second
+
+// you might not want this to continue after a set time
+const interval = setInterval(() => console.log('do something'), 1000);
+setTimeout(() => clearInterval(interval), 5000);
+
+// This will set a repeating interval element that will log 'do something' to the console every 1 sec then after 5 seconds the interval will clear
+```
+
+### Destructuring
+```js
+// slide example
+const i = [1, 2, 4, 5];
+
+// simple array destructuring: t=1, s=2
+const [t, s] = i;
+
+// skipping elements: m=1 (first), n=5 (fourth)
+const [m, , , n] = i;
+
+// rest collects remaining items: x=1, y=2, others=[4,5]
+const [x, y, ...others] = i;
+
+const o = { a: 1, b: 'animals', c: ['fish', 'cats'] };
+
+// object destructuring: a=1, c is renamed to v -> v = ['fish','cats']
+const { a, c: v } = o;
+
+console.log(JSON.stringify({ t, s, m, n, x, y, others, a, v }, null, 2));
+/*
+{
+  "t": 1,
+  "s": 2,
+  "m": 1,
+  "n": 5,
+  "x": 1,
+  "y": 2,
+  "others": [4,5],
+  "a": 1,
+  "v": ["fish","cats"]
+}
+*/
+
+//non-destructor equivalent:
+const t = i[0];
+const s = i[1];
+const m = i[0];
+const n = i[3];
+const x = i[0]; const y = i[1]; const others = i.slice(2);
+const a = o.a;
+const v = o.c;
+
+// extra handy stuff
+// defaults if value is missing/undefined
+const [p = 10, q = 20] = [1]; // p=1, q=20
+
+// nested destructuring
+const nested = { user: { name: 'Sam', addr: { city: 'Provo' } } };
+const { user: { name, addr: { city } } } = nested; // name='Sam', city='Provo'
+
+// object rest
+const { b, ...rest } = o; // b='animals', rest = { a:1, c:[...] }
+
+// destructuring in function params
+function greet({ name = 'guest', age } = {}) {
+  console.log(name, age);
+}
+greet({ name: 'Lee' }); // 'Lee', undefined
+```
+
+## JSON
+
+📖 **Deeper dive reading**:
+
+- [MDN JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)
+- [Douglas Crockford: The JSON Saga](https://www.youtube.com/watch?v=-C-JoyNuQJs)
+
+JavaScript Object Notation (JSON) was conceived by Douglas Crockford in 2001 while working at Yahoo! JSON, pronounced like the name Jason, received official standardization in 2013 and 2017 (ECMA-404, [RFC 8259](https://datatracker.ietf.org/doc/html/rfc8259)).
+
+JSON provides a simple, and yet effective way, to share and store data. By design JSON is easily convertible to, and from, JavaScript objects. This makes it a very convenient data format when working with web technologies. Because of its simplicity, standardization, and compatibility with JavaScript, JSON has become one of the world's most popular data formats.
+
+### Format
+
+A JSON document contains one of the following data types:
+
+| Type    | Example                 |
+| ------- | ----------------------- |
+| string  | "crockford"             |
+| number  | 42                      |
+| boolean | true                    |
+| array   | [null,42,"crockford"]   |
+| object  | {"a":1,"b":"crockford"} |
+| null    | null                    |
+
+Most commonly, a JSON document contains an object. Objects contain zero or more key value pairs. The key is always a string, and the value must be one of the valid JSON data types. Key value pairs are delimited with commas. Curly braces delimit an object, square brackets and commas delimit arrays, and strings are always delimited with double quotes.
+
+Here is an example of a JSON document.
+
+```json
+{
+  "class": {
+    "title": "web programming",
+    "description": "Amazing"
+  },
+  "enrollment": ["Marco", "Jana", "فَاطِمَة"],
+  "start": "2025-02-01",
+  "end": null
+}
+```
+
+JSON is always encoded with [UTF-8](https://en.wikipedia.org/wiki/UTF-8). This allows for the representation of global data.
+
+### Converting to JavaScript
+
+You can convert JSON to, and from, JavaScript using the `JSON.parse` and `JSON.stringify` functions.
+
+```js
+const obj = { a: 2, b: 'crockford', c: undefined };
+const json = JSON.stringify(obj);
+const objFromJson = JSON.parse(json);
+
+console.log(obj, json, objFromJson);
+
+// OUTPUT:
+// {a: 2, b: 'crockford', c: undefined}
+// {"a":2, "b":"crockford"}
+// {a: 2, b: 'crockford'}
+```
+
+Note that in this example, JSON cannot represent the JavaScript `undefined` object and so it gets dropped when converting from JavaScript to JSON.
+
+
+### Utilizing Local Storage
+You can utilize local storage to store information for your website if you dont yet have a database for storage. 
+
+```js
+let myObject = {
+  name: 'Bob',
+  info: { favoriteClass: 'CHEM227', likesCS: true },
+};
+
+//store this data object in local storage:
+localStorage.setItem('myKey', JSON.stringify(myObject));
+console.log(JSON.parse(localStorage.getItem('myKey')));
+
+```
+
+>[!NOTE] By utilizing `localStorage` it is imoportant to note that information here is only sotred on this browser for this hostname and port.
+
+### Hooks
+JavaScript utlizes hooks to transmit component state 
+
+`useState`: Component state
+
+```js
+function App(){
+  const [count, update] = React.useState(10);
+  console.log(count);
+  return <div onClick={() => update(count + 1)}>Count: {count}</div>;
+}
+```
+`useEffect`: lifecycle and external events
+```js
+function useEffectHookDemo() {
+  React.useEffect(() => {
+    console.log('rendered'); // this logs on first render
+  });
+
+  return <div>useEffectExample</div>;
+}
+
+// more complicated example:
+function UseEffectHookDemo() {
+  const [count1, update1] = React.useState(0);
+  const [count2, update2] = React.useState(0);
+
+  React.useEffect(() => {
+    console.log(`count1 effect triggered ${count1}`);
+  }, [count1]);
+
+  return (
+    <ol>
+      <li onClick={() => update1(count1 + 1)}>Item 1 - {count1}</li>
+      <li onClick={() => update2(count2 + 1)}>Item 2 - {count2}</li>
+    </ol>
+  );
+}
+
+// use in database connection:
+function Clicker() {
+  const [count, update] = React.useState(5);
+
+  return (
+    <div onClick={() => update(count - 1)}>
+      Click count: {count}
+      {count > 0 ? <Db /> : <div>DB Connection Closed</div>}
+    </div>
+  );
+}
+
+function Db() {
+  React.useEffect(() => {
+    console.log('connected');
+
+    return function cleanup() {
+      console.log('disconnected');
+    };
+  }, []);
+
+  return <div>DB Connection</div>;
+}
+
+```
+
+
 
 ### Document Object Model
 
