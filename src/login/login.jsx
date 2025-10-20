@@ -30,7 +30,7 @@ export function Login({ userLoggedIn }) {
     }
 
     function validLoginInfo(e) {
-        const registeredUsers = JSON.parse(localStorage.getItem('registered_users') || '[]');
+        const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
         const foundUser = registeredUsers.find(u => u.username === username && u.password === password);
         return !!foundUser
     }

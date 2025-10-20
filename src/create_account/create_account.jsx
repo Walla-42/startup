@@ -28,7 +28,7 @@ export function CreateAccount() {
     function storeUser(username, email, password){
         const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
         registeredUsers.push({ username, email, password});
-        localStorage.setItem('registered_users', JSON.stringify(registeredUsers));
+        localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
     }
 
     function userExists(username){
