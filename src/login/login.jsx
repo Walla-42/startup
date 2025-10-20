@@ -1,7 +1,40 @@
 import React from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import './login_create_account.css'
 
-export function Login() { 
+export function Login({ userLoggedIn }) { 
+    const [username, setUsername] = React.useState('');
+    const [password, setPassword] = React.useState('');
+    const [error, setError] = React.useState('');
+    const navigate = useNavigate();
+
+    function loginUser(e) {
+        // prevents page from reloading
+        e.preventDefault();
+
+        if (validLoginInfo({ username, password })) {
+            // logging user login
+            console.log('logging in ' + username);
+
+            // store user in local storage
+            localStorage.setItem('currentUser', username);
+            userLoggedIn?.(username);
+            navigate("/home");
+
+        } else {
+            setError("Invalid username or password");
+            setPassword('');
+            setUsername('');
+        }
+
+    }
+
+    function validLoginInfo(e) {
+        const registeredUsers = JSON.parse(localStorage.getItem('registered_users') || '[]');
+        const foundUser = registeredUsers.find(u => u.username === username && u.password === password);
+        return !!foundUser
+    }
+
     return (
         <main>
             <div className="left-column">
@@ -17,10 +50,11 @@ export function Login() {
                     <p>Don't have an account? <a href='create_account'>Create your account</a></p>
                 </div>
                 <div id="login-section">
-                    <form method="get" action="home">
+                    <form onSubmit={ loginUser }>
                         <fieldset>
-                            <input type="text" className="login-inputs" name="username" placeholder="username" required/><br/>
-                            <input type="password" className="login-inputs" name="password" placeholder="password" required/><br/>
+                            <input type="text" className="login-inputs" value = { username } onChange={(e)=>setUsername(e.target.value)} name="username" placeholder="username" required/><br/>
+                            <input type="password" className="login-inputs" value = { password } onChange={(e)=>setPassword(e.target.value)} name="password" placeholder="password" required/><br/>
+                            <p id="login_error" style={{color: 'red'}}>{ error }</p>
                             <button type="submit" className="login-button button">Login</button>
                         </fieldset>
                     </form>
