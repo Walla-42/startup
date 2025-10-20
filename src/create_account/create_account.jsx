@@ -26,11 +26,14 @@ export function CreateAccount() {
     }
 
     function storeUser(username, email, password){
-
+        const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+        registeredUsers.push({ username, email, password});
+        localStorage.setItem('registered_users', JSON.stringify(registeredUsers));
     }
 
     function userExists(username){
-
+        const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+        return registeredUsers.some(u => u.username === username);
     }
 
     return (
