@@ -3,10 +3,12 @@ import { NavLink } from 'react-router-dom';
 import './home.css'
 
 export function Home() { 
+    const [user, setUser] = React.useState(localStorage.getItem('currentUser') || null)
+
     return(
     <main className="home-main">
         <div className="user-login-info">
-            <p>Logged in as: <span id="player-name">current-user</span></p>
+            <p>Logged in as: <span id="player-name">{ user }</span></p>
         </div>
         
         <div className="GameButtons">

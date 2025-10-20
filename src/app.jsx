@@ -13,6 +13,7 @@ import { NameThatMolecule } from './name_that_molecule/name_that_molecule';
 
 
 export default function App() {
+    const [user, userLoggedIn] = React.useState(localStorage.getItem('currentUser') || null)
     return (
         <BrowserRouter>
             <div className='body bg-dark text-light'>
@@ -21,15 +22,15 @@ export default function App() {
                         <NavLink to="home"><img src="/StartupLogo.svg" alt="BioMatch Logo" width="150px" height="50px" id="Logo"/></NavLink>
                     </div>
                     <nav className="navigation-buttons">
-                        <NavLink to="home"><button className="nav-button button">Home</button></NavLink>
-                        <NavLink to ='/'><button  className="nav-button button">Logout</button></NavLink>
-                        <NavLink to ='leaderboard'><button className="nav-button button">Leaderboards</button></NavLink>
+                        {user && <NavLink to="home"><button className="nav-button button">Home</button></NavLink>}
+                        {user && <NavLink to ='/'><button  className="nav-button button">Logout</button></NavLink>}
+                        {user && <NavLink to ='leaderboard'><button className="nav-button button">Leaderboards</button></NavLink>}
                         <NavLink to="https://www.github.com/walla-42/startup" target="_blank"><button className="nav-button button">Github</button></NavLink>
                     </nav>
                 </header>
 
                 <Routes>
-                    <Route path='/' element={<Login />} exact />
+                    <Route path='/' element={<Login userLoggedIn={userLoggedIn}  />} exact />
                     <Route path='/about' element={<About />} exact />
                     <Route path='/create_account' element={<CreateAccount />} exact />
                     <Route path='/home' element={<Home />} exact />

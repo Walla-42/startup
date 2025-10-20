@@ -18,18 +18,16 @@ export function Login({ userLoggedIn }) {
 
             // store user in local storage
             localStorage.setItem('currentUser', username);
-            userLoggedIn?.(username);
+            userLoggedIn(username);
             navigate("/home");
-
         } else {
             setError("Invalid username or password");
             setPassword('');
             setUsername('');
         }
-
     }
 
-    function validLoginInfo(e) {
+    function validLoginInfo({ username, password }) {
         const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
         const foundUser = registeredUsers.find(u => u.username === username && u.password === password);
         return !!foundUser
