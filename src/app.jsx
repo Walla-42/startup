@@ -14,6 +14,12 @@ import { NameThatMolecule } from './name_that_molecule/name_that_molecule';
 
 export default function App() {
     const [user, userLoggedIn] = React.useState(localStorage.getItem('currentUser') || null)
+
+    function logoutUser() {
+        localStorage.removeItem('currentUser');
+        userLoggedIn(null);
+    }
+
     return (
         <BrowserRouter>
             <div className='body bg-dark text-light'>
@@ -23,7 +29,7 @@ export default function App() {
                     </div>
                     <nav className="navigation-buttons">
                         {user && <NavLink to="home"><button className="nav-button button">Home</button></NavLink>}
-                        {user && <NavLink to ='/'><button  className="nav-button button">Logout</button></NavLink>}
+                        {user && <NavLink to ='/'><button  className="nav-button button" onClick={logoutUser}>Logout</button></NavLink>}
                         {user && <NavLink to ='leaderboard'><button className="nav-button button">Leaderboards</button></NavLink>}
                         <NavLink to="https://www.github.com/walla-42/startup" target="_blank"><button className="nav-button button">Github</button></NavLink>
                     </nav>
