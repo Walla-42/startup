@@ -1,7 +1,38 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './login_create_account.css'
 
 export function CreateAccount() { 
+    const [username, setUsername] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+    const [error, setError] = React.useState('');
+    const navigate = useNavigate();
+
+    function createAccount(e) {
+        e.preventDefault() // prevent the page from reloading when form is submited
+        if (!userExists(username)) {
+            // store user data in local storage and nav to login page to log in
+            storeUser(username, email, password);
+            navigate('/');
+
+        } else {
+            // display error and clear fields
+            setError("Username already taken");
+            setUsername('');
+            setEmail('');
+            setPassword('');
+        }
+    }
+
+    function storeUser(username, email, password){
+
+    }
+
+    function userExists(username){
+
+    }
+
     return (
     <main>
         <div className="left-column">
@@ -17,11 +48,12 @@ export function CreateAccount() {
                 <p>Already have an account? <a href='/'>Login here</a></p>
             </div>
             <div id="login-section">
-                <form method="get" action="/">
+                <form onSubmit={ createAccount }>
                     <fieldset>
-                        <input type="text" className="login-inputs" name="username" placeholder="username" required/><br/>
-                        <input type="text" className="login-inputs" name="email" placeholder="email" required/><br/>
-                        <input type="password" className="login-inputs" name="password" placeholder="password" required/><br/>
+                        <input type="text" className="login-inputs" value={ username } onChange={(e)=>setUsername(e.target.value)} name="username" placeholder="username" required/><br/>
+                        <input type="text" className="login-inputs" value={ email } onChange={(e)=>setEmail(e.target.value)} name="email" placeholder="email" required/><br/>
+                        <input type="password" className="login-inputs" value={ password } onChange={(e)=>setPassword(e.target.value)} name="password" placeholder="password" required/><br/>
+                        <p style={{color:'red'}}>{ error }</p>
                         <button type="submit" className="login-button button">Create Account</button>
                     </fieldset>
                 </form>
