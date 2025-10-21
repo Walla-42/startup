@@ -1,10 +1,52 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { GameEvent, GameNotifier } from './gameNotifier';
 import './home.css'
 
 export function Home() { 
     const [user, setUser] = React.useState(localStorage.getItem('currentUser') || null)
 
+    const [events, setEvent] = React.useState([]);
+
+    React.useEffect(() => {
+        GameNotifier.addHandler(handleGameEvent);
+
+        return () => {
+        GameNotifier.removeHandler(handleGameEvent);
+        };
+    }, []);
+
+    function handleGameEvent(event) {
+        setEvent((prevEvents) => {
+        let newEvents = [event, ...prevEvents];
+        if (newEvents.length > 10) {
+            newEvents = newEvents.slice(1, 10);
+        }
+        return newEvents;
+        });
+    }
+
+    function createMessageArray() {
+        const messageArray = [];
+        for (const [i, event] of events.entries()) {
+        let message = 'unknown';
+        if (event.type === GameEvent.End) {
+            message = `scored ${event.value.score}`;
+        } else if (event.type === GameEvent.Start) {
+            message = `started a new game`;
+        } else if (event.type === GameEvent.System) {
+            message = event.value.msg;
+        }
+
+        messageArray.push(
+            <div key={i} className='event'>
+            <span className={'player-event'}>{event.from.split('@')[0]}</span>
+            {message}
+            </div>
+        );
+        }
+        return messageArray;
+    }
     return(
     <main className="home-main">
         <div className="user-login-info">
@@ -17,7 +59,7 @@ export function Home() {
         </div>
 
         <div className="live-updates">
-            <p><span id="websocket-user">Walla42</span> has achieved a new highscore in <span id="websocket-game">Name That Molecule</span>!</p>
+            <p>{createMessageArray()}</p>
         </div>
     </main>
     )

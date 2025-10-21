@@ -49,11 +49,6 @@
     border-radius: 10px;
 }
 
-/*Websocket Message Box Styling*/
-#websocket-user {
-    color: rgb(2, 193, 11);
-}
-
 .live-updates {
     display: flex;
     justify-content: center;
@@ -70,10 +65,36 @@
     font-size: clamp(11px, 2vw, 16px);
     align-self: center;
 }
-
-#websocket-game {
-    color: yellow;
+.players {
+  flex: 1;
+  width: 100%;
+  padding: 0.5em;
 }
+
+.player-name {
+  color: rgb(60, 208, 72);
+  margin: 0 0.25em;
+}
+
+#player-messages {
+  padding-top: 0.25em;
+  opacity: 0.7;
+}
+
+.event {
+  color: rgb(255, 255, 255);
+}
+
+.player-event {
+  color: rgb(188, 81, 142);
+  margin: 0 0.25em;
+}
+
+.system-event {
+  color: rgb(221, 148, 40);
+  margin: 0 0.25em;
+}
+
 
 @media (max-width: 600px) {
   .GameButtons {
