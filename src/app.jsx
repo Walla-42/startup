@@ -25,12 +25,13 @@ export default function App() {
             <div className='body bg-dark text-light'>
                 <header>
                     <div id="Title">
-                        <NavLink to="home"><img src="/StartupLogo.svg" alt="BioMatch Logo" width="150px" height="50px" id="Logo"/></NavLink>
+                        <img src="/StartupLogo.svg" alt="BioMatch Logo" width="150px" height="50px" id="Logo"/>
                     </div>
                     <nav className="navigation-buttons">
                         {user && <NavLink to="home"><button className="nav-button button">Home</button></NavLink>}
-                        {user && <NavLink to ='/'><button  className="nav-button button" onClick={logoutUser}>Logout</button></NavLink>}
                         {user && <NavLink to ='leaderboard'><button className="nav-button button">Leaderboards</button></NavLink>}
+                        {user && <NavLink to ='/'><button  className="nav-button button" onClick={logoutUser}>Logout</button></NavLink>}
+                        {!user && <NavLink to ='/'><button className="nav-button button">Login</button></NavLink>}
                         <NavLink to="https://www.github.com/walla-42/startup" target="_blank"><button className="nav-button button">Github</button></NavLink>
                     </nav>
                 </header>
