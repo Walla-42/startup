@@ -54,7 +54,7 @@ export function NameThatMolecule() {
     // Handle game completion: save to leaderboard and broadcast notification
     React.useEffect(() => {
         if (gameState === 'complete') {
-            const userName = localStorage.getItem('currentUser') || 'Anonymous';
+            const userName = sessionStorage.getItem('currentUser') || 'Anonymous';
             const gameName = 'Name That Molecule';
             const date = new Date().toLocaleDateString();
             

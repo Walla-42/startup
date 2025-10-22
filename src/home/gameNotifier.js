@@ -16,18 +16,38 @@ class EventMessage {
 class GameEventNotifier {
   events = [];
   handlers = [];
+  simulatorIntervalId = null;
 
   constructor() {
-    // Simulate chat messages that will eventually come over WebSocket
+    if (!localStorage.getItem('gameNotifications')) {
+      localStorage.setItem('gameNotifications', JSON.stringify([]));
+    }
+  }
+
+  // NOTE: remove this when websocket is implemented
+  startSimulator() {
+    if (this.simulatorIntervalId !== null) {
+      return;
+    }
+
     const gameArray = ['Name That Molecule', 'Genome Trivia'];
-    const userArray = ['Enoch', 'Walla42', 'AwesomeSauce', 'MoleculeMaster','FreakyLookinChicken']
-    setInterval(() => {
+    const userArray = ['Enoch', 'Walla42', 'AwesomeSauce', 'MoleculeMaster','FreakyLookinChicken'];
+    
+    this.simulatorIntervalId = setInterval(() => {
       const score = Math.floor(Math.random() * 3000);
       const date = new Date().toLocaleDateString();
-      const userName = userArray[Math.floor(Math.random()*userArray.length)]
+      const userName = userArray[Math.floor(Math.random() * userArray.length)];
       const game = gameArray[Math.floor(Math.random() * gameArray.length)];
       this.broadcastEvent(userName, GameEvent.End, { name: userName, score: score, date: date, game: game });
     }, 5000);
+  }
+
+  // NOTE: remove this when websocket is implemented
+  stopSimulator() {
+    if (this.simulatorIntervalId !== null) {
+      clearInterval(this.simulatorIntervalId);
+      this.simulatorIntervalId = null;
+    }
   }
 
   broadcastEvent(from, type, value) {
@@ -39,7 +59,7 @@ class GameEventNotifier {
       savedEvents.splice(9);
     }
     localStorage.setItem('gameNotifications', JSON.stringify(savedEvents));
-    
+  
     this.receiveEvent(event);
   }
 

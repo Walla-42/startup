@@ -4,7 +4,7 @@ import { GameEvent, GameNotifier } from './gameNotifier';
 import './home.css'
 
 export function Home() { 
-    const [user, setUser] = React.useState(localStorage.getItem('currentUser') || null)
+    const [user, setUser] = React.useState(sessionStorage.getItem('currentUser') || null)
 
     const [events, setEvent] = React.useState([]);
 
@@ -25,9 +25,13 @@ export function Home() {
 
     React.useEffect(() => {
         GameNotifier.addHandler(handleGameEvent);
+        // Start simulator when home component mounts
+        GameNotifier.startSimulator();
 
         return () => {
-        GameNotifier.removeHandler(handleGameEvent);
+            GameNotifier.removeHandler(handleGameEvent);
+            // Stop simulator when home component unmounts
+            GameNotifier.stopSimulator();
         };
     }, []);
 
