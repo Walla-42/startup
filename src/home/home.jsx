@@ -31,9 +31,17 @@ export function Home() {
         for (const [i, event] of events.entries()) {
         let message = 'unknown';
         if (event.type === GameEvent.End) {
-            message = `scored ${event.value.score}`;
+            message = (
+                <React.Fragment>
+                    scored <span className="score-value">{event.value.score}</span> in <span className="game-name">{event.value.game}</span>
+                </React.Fragment>
+            );
         } else if (event.type === GameEvent.Start) {
-            message = `started a new game`;
+            message = (
+                <React.Fragment>
+                    started a new game in <span className="game-name">{event.value.game}</span>
+                </React.Fragment>
+            );
         } else if (event.type === GameEvent.System) {
             message = event.value.msg;
         }
@@ -59,7 +67,7 @@ export function Home() {
         </div>
 
         <div className="live-updates">
-            <p>{createMessageArray()}</p>
+            {createMessageArray()}
         </div>
     </main>
     )
