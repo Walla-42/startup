@@ -32,6 +32,14 @@ class GameEventNotifier {
 
   broadcastEvent(from, type, value) {
     const event = new EventMessage(from, type, value);
+    
+    const savedEvents = JSON.parse(localStorage.getItem('gameNotifications'));
+    savedEvents.unshift(event);
+    if (savedEvents.length > 9) {
+      savedEvents.splice(9);
+    }
+    localStorage.setItem('gameNotifications', JSON.stringify(savedEvents));
+    
     this.receiveEvent(event);
   }
 

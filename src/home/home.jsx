@@ -8,6 +8,21 @@ export function Home() {
 
     const [events, setEvent] = React.useState([]);
 
+    // Load notifications from localStorage on mount
+    React.useEffect(() => {
+        const savedEvents = localStorage.getItem('gameNotifications');
+        if (savedEvents) {
+            setEvent(JSON.parse(savedEvents));
+        }
+    }, []);
+
+    // Save notifications to localStorage whenever they change
+    React.useEffect(() => {
+        if (events.length > 0) {
+            localStorage.setItem('gameNotifications', JSON.stringify(events));
+        }
+    }, [events]);
+
     React.useEffect(() => {
         GameNotifier.addHandler(handleGameEvent);
 
@@ -20,7 +35,7 @@ export function Home() {
         setEvent((prevEvents) => {
         let newEvents = [event, ...prevEvents];
         if (newEvents.length > 9) {
-            newEvents = newEvents.slice(1, 9);
+            newEvents = newEvents.slice(0, 9);
         }
         return newEvents;
         });
