@@ -58,7 +58,7 @@ export function NameThatMolecule() {
             const gameName = 'Name That Molecule';
             const date = new Date().toLocaleDateString();
             
-            // Save to leaderboard (localStorage)
+            // Save to leaderboard
             const existingScores = JSON.parse(localStorage.getItem('scores') || '[]');
             const newScore = {
                 player: userName,
@@ -67,7 +67,6 @@ export function NameThatMolecule() {
                 date: date
             };
             existingScores.push(newScore);
-            // Sort by score descending
             existingScores.sort((a, b) => b.score - a.score);
             localStorage.setItem('scores', JSON.stringify(existingScores));
 
