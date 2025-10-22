@@ -25,12 +25,10 @@ export function Home() {
 
     React.useEffect(() => {
         GameNotifier.addHandler(handleGameEvent);
-        // Start simulator when home component mounts
         GameNotifier.startSimulator();
 
         return () => {
             GameNotifier.removeHandler(handleGameEvent);
-            // Stop simulator when home component unmounts
             GameNotifier.stopSimulator();
         };
     }, []);
