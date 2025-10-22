@@ -20,7 +20,6 @@ export function NameThatMolecule() {
 
 
     const moleculeList = [
-        // Amino Acids (20 total)
         'Alanine','Arginine','Asparagine','Aspartate','Cysteine','Glutamate','Glutamine','Glycine','Histidine',
         'Isoleucine','Leucine','Lysine','Methionine','Phenylalanine','Proline','Serine','Threonine','Tryptophan',
         'Tyrosine','Valine','Adenine','Guanine','Cytosine','Thymine','Uracil', 'Glucose', 'Fructose','Galactose',
@@ -52,13 +51,12 @@ export function NameThatMolecule() {
     }, [gameState]);
 
     function sortMoleculeList (moleculeList) {
-        const shuffled = [...array]; 
+        const shuffled = [...moleculeList]; 
         for (let i = shuffled.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
+        }
     return shuffled;
-
     }
 
     function handleUserInput(e) {
@@ -73,7 +71,7 @@ export function NameThatMolecule() {
                 incorrect: prev.incorrect
             }));
         } else {
-            setError({currentMolecule})
+            setError(`Incorrect! The correct answer is ${currentMolecule}`)
             setScoreCard(prev => ({
                 ...prev,
                 incorrect: prev.incorrect + 1
@@ -82,6 +80,7 @@ export function NameThatMolecule() {
 
         const nextIndex = currentMoleculeIndex + 1;
         
+        // if the user somehow makes it through all the molecules, reshuffle the list and restart the index at 0
         if (nextIndex >= gameMolecules.length) {
             const reshuffled = shuffleArray(moleculeList);
             setMolecules(reshuffled);
@@ -93,7 +92,6 @@ export function NameThatMolecule() {
         }
 
         setUserInput('');
-        setError('');
     }
 
     function buildURLCall(moleculeName) {
@@ -101,8 +99,8 @@ export function NameThatMolecule() {
     }
 
     return (
-        <main class="game-layout">
-            <div class="game-scorecard">
+        <main className="game-layout">
+            <div className="game-scorecard">
                 <fieldset>
                     <legend>Scorecard</legend>
                     <p id="score">Score: {scoreCard.score}</p>
@@ -112,19 +110,19 @@ export function NameThatMolecule() {
                 </fieldset>
             </div>
 
-            <div class="game-question">
-                <img id="question-image" class="game-question-image" src={buildURLCall(currentMolecule)} alt="question-image"/>
+            <div className="game-question">
+                <img id="question-image" className="game-question-image" src={buildURLCall(currentMolecule)} alt="question-image"/>
 
                 
-                <h3 id="question-text" class="game-question-text">What molecule is this?</h3>
+                <h3 id="question-text" className="game-question-text">What molecule is this?</h3>
 
-                <form class="game-form" onSubmit={handleUserInput}>
+                <form className="game-form" onSubmit={handleUserInput}>
                     <div id="answer-entry">
-                        <label for="answer">Answer: <input type="text" id="answer" name="answer" value ={userInput} 
+                        <label htmlFor="answer">Answer: <input type="text" id="answer" name="answer" value ={userInput} 
                         onChange={(e) => setUserInput(e.target.value)} disabled={gameState === 'complete'} required/><br/></label>
                     </div>
-                    <p id="IncorrectAnswer">{incorrectError}</p>
-                    <button type="button" class="button" disabled={gameState === 'complete'}>Submit</button>
+                    <p id="incorrectError" style={{color:"red"}}>{incorrectError}</p>
+                    <button type="button" className="button" disabled={gameState === 'complete'}>Submit</button>
                 </form>
             </div>
 
