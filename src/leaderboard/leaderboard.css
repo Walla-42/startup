@@ -59,17 +59,14 @@
 
 .leaderboard-row:first-child {
     background: #ffd700;
-    font-weight: bold;
 }
 
 .leaderboard-row:nth-child(2) {
     background: #c0c0c0;
-    font-weight: bold;
 }
 
 .leaderboard-row:nth-child(3) {
     background: #cd7f32;
-    font-weight: bold;
 }
 
 .leaderboard-row td {
@@ -81,26 +78,26 @@
 
 .leaderboard-row td:first-child {
     text-align: center;
-    font-weight: bold;
     font-size: clamp(16px, 2.5vw, 20px);
     color: green;
     width: clamp(40px, 8vw, 80px);
 }
 
 .leaderboard-row td:nth-child(2) {
-    font-weight: 600;
+    font-weight: bold;
     color: black;
 }
 
 .leaderboard-row td:nth-child(3) {
-    font-weight: 500;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
 }
 
 .leaderboard-row td:last-child {
     text-align: right;
-    font-weight: bold;
     font-size: clamp(16px, 2.5vw, 20px);
-    color: green;
+    font-weight: bold;
+    color: rgb(42, 103, 42);
 }
 
 @media (max-width: 480px) {

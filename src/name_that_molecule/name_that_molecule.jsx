@@ -23,11 +23,17 @@ export function NameThatMolecule() {
     const moleculeList = [
         'Alanine','Arginine','Asparagine','Aspartate','Cysteine','Glutamate','Glutamine','Glycine','Histidine',
         'Isoleucine','Leucine','Lysine','Methionine','Phenylalanine','Proline','Serine','Threonine','Tryptophan',
-        'Tyrosine','Valine','Adenine','Guanine','Cytosine','Thymine','Uracil', 'Glucose', 'Fructose','Galactose',
+        'Tyrosine','Valine','Adenine','Guanine','Cytosine','Thymine','Uracil'
+    ]; 
+
+
+    // I will eventually use these, but not right now
+    const hardMolecules = [
+         'Glucose', 'Fructose','Galactose',
         'Ribose','Deoxyribose','Sucrose','Lactose','Maltose','Cholesterol','Palmitate','Oleate','Stearate','Linoleate',
         'Retinol','Thiamine','Riboflavin','Niacin','Pyridoxine','Biotin','Ascorbate','Dopamine','Serotonin','Acetylcholine',
         'FAD','ATP','AMP','Pyrophosphate'
-    ]; 
+    ]
 
     React.useEffect(() => {
         const shuffled = sortMoleculeList(moleculeList);
