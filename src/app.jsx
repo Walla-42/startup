@@ -13,10 +13,10 @@ import { NameThatMolecule } from './name_that_molecule/name_that_molecule';
 
 
 export default function App() {
-    const [user, userLoggedIn] = React.useState(localStorage.getItem('currentUser') || null)
+    const [user, userLoggedIn] = React.useState(sessionStorage.getItem('currentUser') || null)
 
     function logoutUser() {
-        localStorage.removeItem('currentUser');
+        sessionStorage.removeItem('currentUser');
         userLoggedIn(null);
     }
 

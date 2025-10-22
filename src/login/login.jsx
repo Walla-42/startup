@@ -16,8 +16,7 @@ export function Login({ userLoggedIn }) {
             // logging user login
             console.log('logging in ' + username);
 
-            // store user in local storage
-            localStorage.setItem('currentUser', username);
+            sessionStorage.setItem('currentUser', username);
             userLoggedIn(username);
             navigate("/home");
         } else {
