@@ -4,8 +4,6 @@ import './leaderboard.css'
 export function Leaderboard() { 
     const [scores, setScores] = React.useState([]);
 
-    // Demonstrates calling a service asynchronously so that
-    // React can properly update state objects with the results.
     React.useEffect(() => {
         const scoresText = localStorage.getItem('scores');
         if (scoresText) {
@@ -13,14 +11,13 @@ export function Leaderboard() {
         }
     }, []);
 
-    // Demonstrates rendering an array with React
     const scoreRows = [];
 
     if (scores.length) {
         for (const [i, score] of scores.entries()) {
             scoreRows.push(
-                <tr key={i}>
-                    <td>{i}</td>
+                <tr key={i} className="leaderboard-row">
+                    <td>{i + 1}</td>
                     <td>{score.gameName}</td>
                     <td>{score.player}</td>
                     <td>{score.score}</td>

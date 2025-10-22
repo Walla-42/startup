@@ -1,5 +1,6 @@
 import React from 'react';
 import './genome_trivia.css'
+import { GameEvent, GameNotifier } from '../home/gameNotifier';
 
 export function GenomeTrivia() { 
     return (

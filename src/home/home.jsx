@@ -19,8 +19,8 @@ export function Home() {
     function handleGameEvent(event) {
         setEvent((prevEvents) => {
         let newEvents = [event, ...prevEvents];
-        if (newEvents.length > 10) {
-            newEvents = newEvents.slice(1, 10);
+        if (newEvents.length > 9) {
+            newEvents = newEvents.slice(1, 9);
         }
         return newEvents;
         });
@@ -62,7 +62,7 @@ export function Home() {
         </div>
         
         <div className="GameButtons">
-            <NavLink to='/genome_trivia'><button className="game-button button">Genome Trivia</button></NavLink>
+            {/* <NavLink to='/genome_trivia'><button className="game-button button">Genome Trivia</button></NavLink> */}
             <NavLink to='/name_that_molecule'><button className="game-button button">Name That Molecule</button></NavLink>
         </div>
 

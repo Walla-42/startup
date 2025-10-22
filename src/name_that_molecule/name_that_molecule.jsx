@@ -1,5 +1,6 @@
 import React from 'react';
 import './name_that_molecule.css'
+import { GameEvent, GameNotifier } from '../home/gameNotifier';
 
 export function NameThatMolecule() { 
     const [timeLimit, setTimeLimit] = React.useState(30);
@@ -49,6 +50,36 @@ export function NameThatMolecule() {
 
         return () => clearInterval(intervalId);
     }, [gameState]);
+
+    // Handle game completion: save to leaderboard and broadcast notification
+    React.useEffect(() => {
+        if (gameState === 'complete') {
+            const userName = localStorage.getItem('currentUser') || 'Anonymous';
+            const gameName = 'Name That Molecule';
+            const date = new Date().toLocaleDateString();
+            
+            // Save to leaderboard (localStorage)
+            const existingScores = JSON.parse(localStorage.getItem('scores') || '[]');
+            const newScore = {
+                player: userName,
+                gameName: gameName,
+                score: scoreCard.score,
+                date: date
+            };
+            existingScores.push(newScore);
+            // Sort by score descending
+            existingScores.sort((a, b) => b.score - a.score);
+            localStorage.setItem('scores', JSON.stringify(existingScores));
+
+            // Broadcast game end notification
+            GameNotifier.broadcastEvent(
+                userName,
+                GameEvent.End,
+                { name: userName, score: scoreCard.score, date: date, game: gameName }
+            );
+        }
+    }, [gameState, scoreCard.score]);
+
 
     function sortMoleculeList (moleculeList) {
         const shuffled = [...moleculeList]; 
