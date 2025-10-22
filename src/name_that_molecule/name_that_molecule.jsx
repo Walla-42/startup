@@ -5,6 +5,7 @@ import { GameEvent, GameNotifier } from '../home/gameNotifier';
 export function NameThatMolecule() { 
     const [timeLimit, setTimeLimit] = React.useState(30);
     const [timeRemaining, setTimeRemaining] = React.useState(timeLimit)
+    const [gameOver, setGameOver] = React.useState('');
 
     const[scoreCard, setScoreCard] = React.useState({
         score: 0,
@@ -42,7 +43,10 @@ export function NameThatMolecule() {
     }, []); 
 
     React.useEffect(() => {
-        if (gameState !== 'active') return; 
+        if (gameState !== 'active') {
+            setGameOver('Game Over')
+            return; 
+        }
 
         const intervalId = setInterval(() => {
             setTimeRemaining(prev => {
@@ -118,7 +122,7 @@ export function NameThatMolecule() {
         
         // if the user somehow makes it through all the molecules, reshuffle the list and restart the index at 0
         if (nextIndex >= gameMolecules.length) {
-            const reshuffled = shuffleArray(moleculeList);
+            const reshuffled = sortMoleculeList(moleculeList);
             setMolecules(reshuffled);
             setIndex(0);
             setCurrentMolecule(reshuffled[0]);
@@ -143,6 +147,7 @@ export function NameThatMolecule() {
                     <p id="timer">Time Left: {timeRemaining} </p>
                     <p id="correct-answers">Correct: {scoreCard.correct}</p>
                     <p id="incorrect-answers">Incorrect: {scoreCard.incorrect}</p>
+                    <p id="gameOver" style={{color: "red"}}> {gameOver} </p>
                 </fieldset>
             </div>
 
@@ -158,7 +163,7 @@ export function NameThatMolecule() {
                         onChange={(e) => setUserInput(e.target.value)} disabled={gameState === 'complete'} required/><br/></label>
                     </div>
                     <p id="incorrectError" style={{color:"red"}}>{incorrectError}</p>
-                    <button type="button" className="button" disabled={gameState === 'complete'}>Submit</button>
+                    <button type="submit" className="button" disabled={gameState === 'complete'}>Submit</button>
                 </form>
             </div>
 

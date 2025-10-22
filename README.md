@@ -101,8 +101,18 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - all games, scores, timers, and leaderboards are implemented with some sort of functionality. 
+    - I implemented the name that molecule game play including the timer, score card, submit, molecule cycling, and score submission upon game completion
+    - I implemented login and logout functinality including button display controls depending on the use state
+    - I implemented the leaderboard to autoupdate when a new score is available
+    - I implemented cycling mock websocket messages
+- [x] **Hooks** - Hooks implemented for local storage persistence of mock notifications, registered users, react variables ect.
+    - Hooks implemented in app.jsx to track the logged in user from the sessions storage
+    - I implemented the load from local storage, websocket message fetching and hooks to start/stop the websocket message simulator
+    - I implemented hooks to shuffle molecules and start timer when the game starts + on game completion the score is stored
+    - User account information is stored in local storage 
+    - current user is stored in session storage upon login
+    
 
 ## 🚀 Service deliverable
 
