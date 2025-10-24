@@ -2245,3 +2245,206 @@ Many possibilities depending on promise behavior.
 4) Async function returns value -> printed when awaited or .then
 5) Promise chain: Promise.resolve(2).then(x=>x*2).then(x=>x+1).then(console.log) -> 5
 6) Reject handled -> shows error via catch.
+
+
+
+## Express
+### Installations:
+```sh
+npm install express
+```
+
+### Setup:
+***constructor***
+```js
+const express - require('express');
+const app = express();
+
+app.listen(8080);
+```
+***you can now then use `app` to setup HTTP routing and middleware functions to the application***
+
+### Defining Routes in Express:
+HTTP endpoints are implemented in express by defining routes that call a function based upon an HTTP path. 
+
+```js
+app.get('store/provo', (req, res, next) => {
+  res.send({name: 'provo'});
+});
+```
+>[!NOTE] The `get` function takes two parameters - a URL path matching pattern, and a callback function that is invoked when the pattern matches.
+
+`req`: Represents the HTTP request object
+`res`: Represents the HTTP response object
+`next`: is the routing function that Express expects to be called if the routing fucntion wants another function to generate a response. 
+
+If you have two routing function patterns that match, the first one added will be the one chosen for the next parameter. 
+
+**Path Parameters:** You can use path parameters to make paths more flexible. 
+```js
+app.get('/store/:storeName', (req, res, next) => {
+  res.send({ name: req.params.storeName });
+});
+```
+Just prefix the parameter with a `:` to create a path parameter, then access the path parameter with the `req.params` object.
+
+***Other Examples***
+```js
+// Wildcard - matches /store/x and /star/y
+app.put('/st*/:storeName', (req, res) => res.send({ update: req.params.storeName }));
+
+// Pure regular expression
+app.delete(/\/store\/(.+)/, (req, res) => res.send({ delete: req.params[0] }));
+```
+
+### Using Middleware
+***Mediator/Middleware Design Pattern:***
+![middleware_function_map]("https://github.com/webprogramming260/.github/raw/main/profile/webServices/express/webServicesMiddleware.jpg")
+
+The mediator/middleware design pattern works like this: The middleware represents tcompnentized pieces of functinoality. THe mediator loads the middleware componenets and determines their order of execution. When a request comes to the mediator it then passes the request around to the middleware components. 
+
+Express is the middleware and has many middleware functions that provide functionality like routing, authentication, CORS, sessions, serving static web files, cookies, and logging. 
+
+Middleware functions are always called for every HTTP request unless a preceeding middlware function does not call next. 
+
+How do you build a middleware:
+
+```js
+functin middlewareName(req, res, next)
+```
+
+`req` : The HTTP request object
+`res` : The HTTP response object
+`next` : The middleware function to pass processing to
+
+Example use of this architectrue:
+You can create a function that logs out the URL of the request and then passses on processing to the next middlware function:
+```js
+app.use((req, res, next) => {
+  console.log(req.originalUrl)'
+  next()'
+});
+```
+
+>[!NOTE] By not clling the next function after doing its processing, stops the middleware chain from continuing.
+
+### Builtin Middleware
+
+There are built in middleware functions that are available to use:
+```js
+app.use(express.static('public'));
+```
+For this middleware function, it serves up static files found in a given directory that match the request URL
+
+### Third Party Middleware
+```sh
+npm install cookie-parser
+```
+
+```js
+const cookieParser = require('cookie-parser');
+
+app.use(cookieParser());
+
+app.post('/cookie/:name/:value', (req,res,next) => {
+  res.cookie(req.params.name, req.params.value);
+  res.send({ cookie: `${req.params.name}:${req.params.value}` });
+});
+
+app.get('/cookie', (req, res, next) => {
+  res.send({ cookie: req.cookies });
+});
+
+```
+
+### Error Handling Middleware
+error handling middleware is similar to other middlware functions except that it takes an additional err parameter
+```js
+function errorMiddlewareName(err, req, res, next)
+```
+
+you can add a error handler for anything that might go wrong while processing HTTP requests such as this one:
+```js
+app.use(funciton (err, req, res, next) {
+  res.status(500).send({ type: err.name, message: err.message });
+});
+```
+We can then thow an error:
+```js
+app.get('/error', (req, res, next) => {
+  throw new Error('Trouble in river city');
+});
+```
+Then, if we call the error endpoint, we will see our error is being produced:
+```sh 
+-> curl localhost:8080/error
+{"type":"Error", "message":"Trouble in river city"}
+```
+
+***Full Example of a webservice built using Express***
+```js
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const app = express();
+
+// Third party middleware - Cookies
+app.use(cookieParser());
+
+app.post('/cookie/:name/:value', (req, res, next) => {
+  res.cookie(req.params.name, req.params.value);
+  res.send({ cookie: `${req.params.name}:${req.params.value}` });
+});
+
+app.get('/cookie', (req, res, next) => {
+  res.send({ cookie: req.cookies });
+});
+
+// Creating your own middleware - logging
+app.use((req, res, next) => {
+  console.log(req.originalUrl);
+  next();
+});
+
+// Built in middleware - Static file hosting
+app.use(express.static('public'));
+
+// Routing middleware
+
+// Get store endpoint
+app.get('/store/:storeName', (req, res) => {
+  res.send({ name: req.params.storeName });
+});
+
+// Update store endpoint
+app.put('/store/:storeName', (req, res) => res.send({ update: req.params.storeName }));
+
+// Delete store endpoint
+app.delete(/\/store\/(.+)/, (req, res) => res.send({ delete: req.params[0] }));
+
+// Error middleware
+app.get('/error', (req, res, next) => {
+  throw new Error('Trouble in river city');
+});
+
+app.use(function (err, req, res, next) {
+  res.status(500).send({ type: err.name, message: err.message });
+});
+
+// Listening to a network port
+const port = 8080;
+app.listen(port, function () {
+  console.log(`Listening on port ${port}`);
+});
+```
+
+### Dubuggin Express:
+This is copied from the express.md on the CS260 class materials:  
+Let's take a moment to talk about how you can debug a web service running with the Express package under Node.js. Using the code that you created above, set a breakpoint on the code inside the getStore endpoint callback and another breakpoint on the app.listen call. Start debugging by pressing F5. The debugger should stop on the listen call where you can inspect the app variable. Press F5 again to continue running. Now open up your browser and set the location to localhost:8080/store/provo. This should hit the breakpoint on the endpoint. Take some time to inspect the req object. You should be able to see what the HTTP method is, what parameters are provided, and what the path currently is. Press F5 to continue. Your browser should display the JSON object that you returned from your endpoint.
+
+Make another request from our browser, but this time include some query parameters. Something like http://localhost:8080/store/orem?order=2. Requesting that URL should cause your breakpoint to hit again where you can see the URL changes reflected in the req object.
+
+Now, instead of pressing F5 to continue, press F11 to step into the res.send function. This will take you out of your code and into the Express code that handles sending a response. Because you installed the Express package using NPM, all of Express's source code is sitting in the node_modules directory. You can also set breakpoints there, examine variables, and step into functions. Debugging into popular packages is a great way to learn how to code by seeing how really good programmers do things. Take some time to walk around Holowaychuk's code and see if you can understand what it is doing.
+
+
+
+
