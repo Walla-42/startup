@@ -8,7 +8,7 @@ export function Login({ userLoggedIn }) {
     const [error, setError] = React.useState('');
     const navigate = useNavigate();
 
-    function loginUser(e) {
+    async function loginUser(e) {
         // prevents page from reloading
         e.preventDefault();
 
@@ -16,9 +16,22 @@ export function Login({ userLoggedIn }) {
             // logging user login
             console.log('logging in ' + username);
 
-            sessionStorage.setItem('currentUser', username);
-            userLoggedIn(username);
-            navigate("/home");
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                body: JSON.stringify({ username: username, password: password }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            });
+
+            if (response?.status === 200) {
+                sessionStorage.setItem('currentUser', username);
+                userLoggedIn(username);
+                navigate("/home");
+            } else {
+                const body = await response.json();
+                setError(`⚠ Error: ${body.msg}`)
+            }
         } else {
             setError("Invalid username or password");
             setPassword('');
