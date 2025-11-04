@@ -64,31 +64,25 @@ export function NameThatMolecule() {
     // Handle game completion: save to leaderboard and broadcast notification
     React.useEffect(() => {
         if (gameState === 'complete') {
-            const userName = sessionStorage.getItem('currentUser') || 'Anonymous';
-            const gameName = 'Name That Molecule';
-            const date = new Date().toLocaleDateString();
-            
-            // Save to leaderboard
-            const existingScores = JSON.parse(localStorage.getItem('scores') || '[]');
-            const newScore = {
-                player: userName,
-                gameName: gameName,
-                score: scoreCard.score,
-                date: date
-            };
-            existingScores.push(newScore);
-            existingScores.sort((a, b) => b.score - a.score);
-            localStorage.setItem('scores', JSON.stringify(existingScores));
-
-            // Broadcast game end notification
-            GameNotifier.broadcastEvent(
-                userName,
-                GameEvent.End,
-                { name: userName, score: scoreCard.score, date: date, game: gameName }
-            );
+            saveScore(scoreCard.score)
         }
-    }, [gameState, scoreCard.score]);
+    }, [gameState]);
 
+    async function saveScore(score) {
+        const userName = sessionStorage.getItem('currentUser');
+        const gameName = 'Name That Molecule';
+        const date = new Date().toLocaleDateString();
+        const newScore = { player: userName, gameName: gameName, score: score, date: date };
+
+        await fetch('/api/score', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(newScore),
+        });
+
+        // Let other players know the game has concluded
+        GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
+        }
 
     function sortMoleculeList (moleculeList) {
         const shuffled = [...moleculeList]; 

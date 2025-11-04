@@ -69,7 +69,7 @@ apiRouter.get('/scores', verifyAuth, (_req, res) => {
 });
 
 // Submit a new game score
-apiRouter.post('/scores', verifyAuth, (req, res) => {
+apiRouter.post('/score', verifyAuth, (req, res) => {
   scores = updateScores(req.body);
   res.send(scores);
 });
