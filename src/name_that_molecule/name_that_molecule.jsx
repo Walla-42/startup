@@ -3,7 +3,7 @@ import './name_that_molecule.css'
 import { GameEvent, GameNotifier } from '../home/gameNotifier';
 
 export function NameThatMolecule() { 
-    const [timeLimit, setTimeLimit] = React.useState(30);
+    const [timeLimit, setTimeLimit] = React.useState(60);
     const [timeRemaining, setTimeRemaining] = React.useState(timeLimit)
     const [gameOver, setGameOver] = React.useState('');
 

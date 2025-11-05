@@ -118,12 +118,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [ ] **Node.js/Express HTTP service** - fully implemented in the index.js file under the service directory.
+- [ ] **Static middleware for frontend** - authentication static middleware used here. 
+- [ ] **Calls to third party endpoints** - I implemented this during the react part2. The application calls the pubchem api through the automatic get request of img src. 
+- [ ] **Backend service endpoints** - Service endpoints for login, logout, set score, get score, registration all have endpoints
+- [ ] **Frontend calls service endpoints** - Front end login, create account, game and leaderboard all call service endpoints. 
+- [ ] **Supports registration, login, logout, and restricted endpoint** - create account, login, logout all have endpoints and are fully functional. Leaderboards, games and login are all restricted. 
 
 
 ## 🚀 DB deliverable
