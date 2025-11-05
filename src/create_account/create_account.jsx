@@ -12,7 +12,7 @@ export function CreateAccount() {
     async function createAccount(e) {
         e.preventDefault() // prevent the page from reloading when form is submited
 
-        const response = awaitfetch("api/auth/create", {
+        const response = await fetch("/api/auth/create", {
                 method: 'POST',
                 body: JSON.stringify({ username: username, email: email, password: password }),
                 headers: {

@@ -21,21 +21,16 @@ export function Login({ userLoggedIn }) {
             });
 
         if (response?.status === 200) {
-            console.log('logging in ' + response.username);
-            sessionStorage.setItem('currentUser', response.username);
-            userLoggedIn(response.username);
+            let body = await response.json()
+            console.log('logging in ' + body.username);
+            sessionStorage.setItem('currentUser', body.username);
+            userLoggedIn(body.username);
             navigate("/home");
         } else {
             setError("Invalid username or password");
             setPassword('');
             setUsername('');
         }
-    }
-
-    function validLoginInfo({ username, password }) {
-        const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
-        const foundUser = registeredUsers.find(u => u.username === username && u.password === password);
-        return !!foundUser
     }
 
     return (
