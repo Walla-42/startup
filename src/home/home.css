@@ -80,6 +80,7 @@
 }
 
 #player-messages {
+  color: greenyellow;
   padding-top: 0.25em;
   opacity: 0.7;
 }

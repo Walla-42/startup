@@ -5,11 +5,10 @@ const GameEvent = {
 };
 
 class EventMessage {
-  constructor(from, type, value, game) {
+  constructor(from, type, value) {
     this.from = from;
     this.type = type;
     this.value = value;
-    this.game = game;
   }
 }
 
@@ -52,14 +51,14 @@ class GameEventNotifier {
 
   broadcastEvent(from, type, value) {
     const event = new EventMessage(from, type, value);
-    
+
     const savedEvents = JSON.parse(localStorage.getItem('gameNotifications'));
     savedEvents.unshift(event);
     if (savedEvents.length > 9) {
       savedEvents.splice(9);
     }
     localStorage.setItem('gameNotifications', JSON.stringify(savedEvents));
-  
+
     this.receiveEvent(event);
   }
 
@@ -68,7 +67,7 @@ class GameEventNotifier {
   }
 
   removeHandler(handler) {
-    this.handlers.filter((h) => h !== handler);
+    this.handlers = this.handlers.filter((h) => h !== handler);
   }
 
   receiveEvent(event) {

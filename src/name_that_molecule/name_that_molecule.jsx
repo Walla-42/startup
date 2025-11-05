@@ -80,8 +80,8 @@ export function NameThatMolecule() {
             body: JSON.stringify(newScore),
         });
 
-        // Let other players know the game has concluded
-        GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
+    // Let other players know the game has concluded
+    GameNotifier.broadcastEvent(userName, GameEvent.End, { name: userName, score: score, date: date, game: gameName });
         }
 
     function sortMoleculeList (moleculeList) {
