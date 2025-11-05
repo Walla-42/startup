@@ -12,11 +12,7 @@ export function Login({ userLoggedIn }) {
         // prevents page from reloading
         e.preventDefault();
 
-        if (validLoginInfo({ username, password })) {
-            // logging user login
-            console.log('logging in ' + username);
-
-            const response = await fetch('/api/auth/login', {
+        const response = await fetch('/api/auth/login', {
                 method: 'POST',
                 body: JSON.stringify({ username: username, password: password }),
                 headers: {
@@ -24,14 +20,11 @@ export function Login({ userLoggedIn }) {
                 },
             });
 
-            if (response?.status === 200) {
-                sessionStorage.setItem('currentUser', username);
-                userLoggedIn(username);
-                navigate("/home");
-            } else {
-                const body = await response.json();
-                setError(`⚠ Error: ${body.msg}`)
-            }
+        if (response?.status === 200) {
+            console.log('logging in ' + response.username);
+            sessionStorage.setItem('currentUser', response.username);
+            userLoggedIn(response.username);
+            navigate("/home");
         } else {
             setError("Invalid username or password");
             setPassword('');

@@ -20,23 +20,22 @@ app.use('/api', apiRouter);
 
 // Create a new user
 apiRouter.post('/auth/create', async (req, res) => {
-  if (await findUser('email', req.body.email)) {
+  if (await findUser('username', req.body.username)) {
     res.status(409).send({ msg: 'Existing user' });
   } else {
-    const user = await createUser(req.body.email, req.body.password);
-    setAuthCookie(res, user.token);
-    res.send({ email: user.email });
+    await createUser(req.body.username, req.body.email, req.body.password);
+    res.status(200).send({ msg: 'User Created' });
   }
 });
 
 // Login existing user
 apiRouter.post('/auth/login', async (req, res) => {
-  const user = await findUser('email', req.body.email);
+  const user = await findUser('username', req.body.username);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();
       setAuthCookie(res, user.token);
-      res.send({ email: user.email });
+      res.status(200).send({ username: user.username });
       return;
     }
   }
@@ -47,7 +46,7 @@ apiRouter.post('/auth/login', async (req, res) => {
 apiRouter.post('/auth/logout', async (req, res) => { 
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
-    delete user.token;
+    user.token = null;
   }
   res.clearCookie(authCookieName);
   res.status(204).end();
@@ -104,15 +103,15 @@ function updateScores(newScore) {
   return scores;
 }
 
-async function createUser(email, password) {
+async function createUser(username, email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
   const user = {
+    username,
     email,
     password: passwordHash,
-    token: uuid.v4(),
+    token: null
   };
   users.push(user);
-  return user;
 }
 
 async function findUser(field, value) {

@@ -9,31 +9,30 @@ export function CreateAccount() {
     const [error, setError] = React.useState('');
     const navigate = useNavigate();
 
-    function createAccount(e) {
+    async function createAccount(e) {
         e.preventDefault() // prevent the page from reloading when form is submited
-        if (!userExists(username)) {
-            // store user data in local storage and nav to login page to log in
-            storeUser(username, email, password);
-            navigate('/');
 
-        } else {
-            // display error and clear fields
+        const response = awaitfetch("api/auth/create", {
+                method: 'POST',
+                body: JSON.stringify({ username: username, email: email, password: password }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            });
+
+        if (response?.status === 200) {
+            navigate('/');
+        } else if (response?.status === 409) {
             setError("Username already taken");
             setUsername('');
             setEmail('');
             setPassword('');
+        } else {
+            setError(`unexpected error: ${response.msg}`);
+            setUsername('');
+            setEmail('');
+            setPassword('');
         }
-    }
-
-    function storeUser(username, email, password){
-        const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
-        registeredUsers.push({ username, email, password});
-        localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
-    }
-
-    function userExists(username){
-        const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
-        return registeredUsers.some(u => u.username === username);
     }
 
     return (
