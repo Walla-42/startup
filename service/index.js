@@ -46,7 +46,7 @@ apiRouter.post('/auth/login', async (req, res) => {
 apiRouter.post('/auth/logout', async (req, res) => { 
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
-    user.token = null;
+    delete user.token;
   }
   res.clearCookie(authCookieName);
   res.status(204).end();
@@ -109,7 +109,6 @@ async function createUser(username, email, password) {
     username,
     email,
     password: passwordHash,
-    token: null
   };
   users.push(user);
 }
@@ -121,7 +120,7 @@ async function findUser(field, value) {
 
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
-    secure: true, 
+    secure: false, 
     httpOnly: true,
     sameSite: 'strict',
   });
