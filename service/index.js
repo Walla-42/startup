@@ -64,13 +64,15 @@ const verifyAuth = async (req, res, next) => {
 
 // Get game scores
 apiRouter.get('/scores', verifyAuth, async (_req, res) => {
+  console.log(`fetching high scores`)
   const scores = await DB.getHighScores();
   res.send(scores);
 });
 
 // Submit a new game score
 apiRouter.post('/score', verifyAuth, async (req, res) => {
-  scores = updateScores(req.body);
+  console.log(`submitting a score`)
+  const scores = updateScores(req.body);
   res.send(scores);
 });
 
@@ -111,7 +113,7 @@ async function findUser(field, value) {
 
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
-    secure: true, 
+    secure: false, 
     httpOnly: true,
     sameSite: 'strict',
   });
