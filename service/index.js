@@ -2,6 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
+const DB = require('./database.js');
 
 const app = express();
 app.use(express.json());
@@ -9,9 +10,6 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
-
-let users = [];
-let scores = [];
 
 const authCookieName = 'token';
 
@@ -34,6 +32,7 @@ apiRouter.post('/auth/login', async (req, res) => {
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();
+      await DB.updateUser(user)
       setAuthCookie(res, user.token);
       res.status(200).send({ username: user.username });
       return;
@@ -43,10 +42,11 @@ apiRouter.post('/auth/login', async (req, res) => {
 });
 
 // Logout user
-apiRouter.post('/auth/logout', async (req, res) => { 
+apiRouter.delete('/auth/logout', async (req, res) => { 
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
     delete user.token;
+    DB.updateUser(user);
   }
   res.clearCookie(authCookieName);
   res.status(204).end();
@@ -63,12 +63,13 @@ const verifyAuth = async (req, res, next) => {
 };
 
 // Get game scores
-apiRouter.get('/scores', verifyAuth, (_req, res) => {
+apiRouter.get('/scores', verifyAuth, async (_req, res) => {
+  const scores = await DB.getHighScores();
   res.send(scores);
 });
 
 // Submit a new game score
-apiRouter.post('/score', verifyAuth, (req, res) => {
+apiRouter.post('/score', verifyAuth, async (req, res) => {
   scores = updateScores(req.body);
   res.send(scores);
 });
@@ -85,22 +86,9 @@ app.use((_req, res) => {
 });
 
 // Helper functions
-function updateScores(newScore) {
-  let found = false;
-  for (const [i, prevScore] of scores.entries()) {
-    if (newScore.score > prevScore.score) {
-      scores.splice(i, 0, newScore);
-      found = true;
-      break;
-    }
-  }
-  if (!found) {
-    scores.push(newScore);
-  }
-  if (scores.length > 10) {
-    scores.length = 10;
-  }
-  return scores;
+async function updateScores(newScore) {
+  await DB.addScore(newScore);
+  return DB.getHighScores();
 }
 
 async function createUser(username, email, password) {
@@ -110,12 +98,15 @@ async function createUser(username, email, password) {
     email,
     password: passwordHash,
   };
-  users.push(user);
+  await DB.addUser(user);
 }
 
 async function findUser(field, value) {
   if (!value) return null;
-  return users.find((u) => u[field] === value);
+  if (field === 'token') {
+    return DB.getUserByToken(value);
+  }
+  return DB.getUser(value)
 }
 
 function setAuthCookie(res, authToken) {
