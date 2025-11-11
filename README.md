@@ -118,20 +118,20 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - fully implemented in the index.js file under the service directory.
-- [ ] **Static middleware for frontend** - authentication static middleware used here. 
-- [ ] **Calls to third party endpoints** - I implemented this during the react part2. The application calls the pubchem api through the automatic get request of img src. 
-- [ ] **Backend service endpoints** - Service endpoints for login, logout, set score, get score, registration all have endpoints
-- [ ] **Frontend calls service endpoints** - Front end login, create account, game and leaderboard all call service endpoints. 
-- [ ] **Supports registration, login, logout, and restricted endpoint** - create account, login, logout all have endpoints and are fully functional. Leaderboards, games and login are all restricted. 
+- [x] **Node.js/Express HTTP service** - fully implemented in the index.js file under the service directory.
+- [x] **Static middleware for frontend** - authentication static middleware used here. 
+- [x] **Calls to third party endpoints** - I implemented this during the react part2. The application calls the pubchem api through the automatic get request of img src. 
+- [x] **Backend service endpoints** - Service endpoints for login, logout, set score, get score, registration all have endpoints
+- [x] **Frontend calls service endpoints** - Front end login, create account, game and leaderboard all call service endpoints. 
+- [x] **Supports registration, login, logout, and restricted endpoint** - create account, login, logout all have endpoints and are fully functional. Leaderboards, games and login are all restricted. 
 
 
 ## 🚀 DB deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
+- [x] **Stores data in MongoDB** - Game and user data are stored in a mongodb database. Implemented database.js and integrated it with the service. 
+- [x] **Stores credentials in MongoDB** - User credentials are stored in a mongodb database. 
 
 ## 🚀 WebSocket deliverable
 
