@@ -113,7 +113,7 @@ async function findUser(field, value) {
 
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
-    secure: false, 
+    secure: true, 
     httpOnly: true,
     sameSite: 'strict',
   });
