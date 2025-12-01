@@ -25,11 +25,9 @@ export function Home() {
 
     React.useEffect(() => {
         GameNotifier.addHandler(handleGameEvent);
-        GameNotifier.startSimulator();
 
         return () => {
             GameNotifier.removeHandler(handleGameEvent);
-            GameNotifier.stopSimulator();
         };
     }, []);
 

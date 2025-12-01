@@ -113,10 +113,12 @@ async function findUser(field, value) {
 }
 
 function setAuthCookie(res, authToken) {
+  const isProd = process.env.NODE_ENV === 'production';
   res.cookie(authCookieName, authToken, {
-    secure: true, 
+    secure: isProd,
     httpOnly: true,
-    sameSite: 'strict',
+    sameSite: isProd ? 'strict' : 'lax',
+    path: '/',
   });
 }
 
