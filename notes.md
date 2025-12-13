@@ -2447,4 +2447,64 @@ Now, instead of pressing F5 to continue, press F11 to step into the res.send fun
 
 
 
+## Final Exam Practice Answers:
+Default ports
+HTTP uses port 80, HTTPS uses port 443, and SSH uses port 22. These are well-known ports standardized for interoperability. Changing them is possible but uncommon outside hardened environments.
+
+HTTP status codes 300 / 400 / 500
+300-level codes indicate redirection responses. 400-level codes indicate client-side errors such as malformed requests or unauthorized access. 500-level codes indicate server-side failures after a valid request was received.
+
+HTTP header Content-Type
+The Content-Type header tells the client or server how to interpret the body of the HTTP message. It specifies the media type such as application/json or text/html. This enables correct parsing, decoding, and rendering of the payload.
+
+Secure / HttpOnly / SameSite cookies
+A Secure cookie is only sent over HTTPS connections, preventing interception over HTTP. An HttpOnly cookie cannot be accessed via JavaScript, mitigating XSS attacks. A SameSite cookie restricts cross-site request behavior to reduce CSRF risk.
+
+MongoDB query { name: "Mark" }
+This query matches all documents where the name field exists and equals the string "Mark". Matching is case-sensitive by default. Documents missing the field or with different casing are excluded.
+
+Password storage
+Passwords should never be stored in plaintext. They must be hashed using a strong adaptive algorithm such as bcrypt, scrypt, or Argon2 with a unique salt per user. Hashing is one-way and protects against database leaks.
+
+WebSocket backend + frontend console output
+Without the exact code, the frontend will log whatever message payload the server sends via socket.send(). WebSocket messages are delivered as strings or binary data. The output reflects server-side emit order and content.
+
+WebSocket protocol purpose
+WebSockets provide full-duplex, persistent communication between client and server. They eliminate HTTP polling overhead and enable real-time updates. This is essential for chat, live dashboards, and multiplayer applications.
+
+Acronyms
+JSX: JavaScript XML, a syntax extension for React. JS: JavaScript, a scripting language for web and server development. AWS: Amazon Web Services, NPM: Node Package Manager, NVM: Node Version Manager.
+
+React component text output
+Without the component code, a React component renders JSX into plain text nodes within the DOM. Props determine dynamic text content. The output is the evaluated JSX tree after parameter substitution.
+
+Nested React components output
+React components render hierarchically from parent to child. The final output is a single DOM tree combining all rendered JSX. Child components replace their invocation points in the parent’s JSX.
+
+React.useState
+useState creates reactive local state for a functional component. It returns the current state value and a setter function. Updating state triggers a re-render.
+
+React Hooks purpose
+Hooks allow functional components to use state, lifecycle logic, and context. They replace most class-based component patterns. Hooks enable cleaner, reusable logic through composition.
+
+React Hooks specifics
+State Hook manages local state. Context Hook accesses shared global state without prop drilling. Ref Hook holds mutable values without triggering re-renders. Effect Hook handles side effects like data fetching. Performance Hooks optimize rendering behavior.
+
+package.json
+package.json defines a Node.js project’s metadata and dependencies. It specifies scripts, versions, and entry points. It enables reproducible builds and dependency management.
+
+fetch function
+fetch performs HTTP requests from the browser or Node.js. It returns a Promise resolving to a Response object. It is asynchronous and non-blocking.
+
+node.js
+Node.js is a JavaScript runtime built on the V8 engine. It allows JavaScript to run on the server. It is event-driven and optimized for I/O-heavy workloads.
+
+pm2
+PM2 is a production process manager for Node.js applications. It handles process restarts, clustering, and monitoring. It improves reliability and uptime.
+
+Vite
+Vite is a modern frontend build tool and dev server. It provides extremely fast hot module replacement using native ES modules. It replaces heavier bundlers during development while still supporting optimized production builds.
+
+
+
 
